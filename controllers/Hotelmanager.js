@@ -90,7 +90,7 @@ const getBookings = asynchandler( async (req,res) => {
 const clientHotelRoom = asynchandler(async (req,res) => {
     const pkgs = await hotelConfigRepository.roomCategorys()
     // const currentTime = new Date();
-    const currentTime = new Date().toLocaleString('en-US', { timeZone: 'Africa/Lagos' });
+    const currentTime = new Date().toISOString();
  // Converts to UTC format
     console.log("🚀 ~ clientHotelRoom ~ currentTime:", currentTime)
 
