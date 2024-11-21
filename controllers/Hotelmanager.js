@@ -150,8 +150,8 @@ const activeMarquees = await Marque.findOne({
 const result = await connectDB.query(`
     SELECT *
     FROM marques
-    WHERE start_time <= NOW()
-    AND end_time >= NOW()
+    WHERE startTime <= NOW()
+    AND endTime >= NOW()
     LIMIT 1;
   `, { type: Sequelize.QueryTypes.SELECT });
 
