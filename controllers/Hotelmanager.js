@@ -149,7 +149,7 @@ const activeMarquees = await Marque.findOne({
 
 const result = await connectDB.query(`
     SELECT *
-    FROM Marque
+    FROM marques
     WHERE start_time <= NOW()
     AND end_time >= NOW()
     LIMIT 1;
