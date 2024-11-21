@@ -4,7 +4,7 @@ const cloudinaryRepo = require("../repos/cloudinary");
 const RoomNumber = require("../models/RoomNumbers");
 const Room = require("../models/Room");
 const HotelBooking = require("../models/HotelBooking");
-const { Op,Sequelize } = require("sequelize");
+const { Op,Sequelize, } = require("sequelize");
 const moment = require("moment");
 const sequelize = require("sequelize");
 const Marque = require("../models/Marque");
@@ -108,21 +108,25 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     //   }
     // });
 
-    const [results] = await sequelize.query(`
+    const [result] = await sequelize.query(`
         SELECT *
         FROM Marque
         WHERE start_time <= NOW()
-          AND end_time >= NOW();
-      `);
+          AND end_time >= NOW()
+        LIMIT 1;
+      `, {
+        type: sequelize.QueryTypes.SELECT, // Specify query type
+      });
       
-      console.log("🚀 ~ Raw query results:", results);
+      
+      console.log("🚀 ~ Raw query results:", result);
 
 
     // console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
     
    return res.render('index', {
         pkgs: pkgs,
-        activeMarquees:null
+        activeMarquees:result
       });
 })
 
