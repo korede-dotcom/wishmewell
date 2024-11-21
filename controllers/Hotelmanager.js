@@ -110,7 +110,7 @@ const clientHotelRoom = asynchandler(async (req,res) => {
 
 
  
-        const currentTime = new Date(date);
+        const currentTime = new Date();
       
         // Format the date components
         const year = currentTime.getFullYear();
