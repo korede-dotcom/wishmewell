@@ -147,7 +147,7 @@ const activeMarquees = await Marque.findOne({
   },
 });
 
-const result = await sequelize.query(`
+const result = await connectDB.query(`
     SELECT *
     FROM Marque
     WHERE start_time <= NOW()
