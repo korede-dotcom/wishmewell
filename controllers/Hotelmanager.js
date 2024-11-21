@@ -116,22 +116,22 @@ const clientHotelRoom = asynchandler(async (req,res) => {
 // Get the current time as a JavaScript Date object
 const currentTime = new Date();
 
-// Convert it to the correct format: ISO 8601 with timezone (YYYY-MM-DDTHH:mm:ss.sss+HH:mm)
-const formattedCurrentTime = currentTime.toISOString(); // This gives the time in ISO format with UTC
+// Convert it to ISO 8601 with timezone (YYYY-MM-DDTHH:mm:ss.sss+HH:mm)
+const formattedCurrentTime = currentTime.toISOString(); // Default to UTC, then adjust the timezone manually
 
-// To adjust the time zone, you can manually apply the timezone offset (in the desired format)
+// Get the timezone offset in minutes, and convert it to the required format (+HHMM)
 const timezoneOffset = currentTime.getTimezoneOffset(); // in minutes
 const hoursOffset = String(Math.floor(Math.abs(timezoneOffset) / 60)).padStart(2, '0');
 const minutesOffset = String(Math.abs(timezoneOffset) % 60).padStart(2, '0');
 const sign = timezoneOffset <= 0 ? '+' : '-';
 const customTimezone = `${sign}${hoursOffset}${minutesOffset}`;
 
-// Adjust the ISO string by appending the custom timezone
-const finalFormattedTime = `${formattedCurrentTime.slice(0, -1)}${customTimezone}`; // Remove 'Z' and add custom timezone
+// Adjust the ISO string to append the timezone correctly
+const finalFormattedTime = `${formattedCurrentTime.slice(0, -1)}${customTimezone}`;
 
 console.log("🚀 ~ clientHotelRoom ~ formattedCurrentTime:", finalFormattedTime);
 
-// Use the formatted time in the Sequelize query
+// Sequelize query to match the active marquee
 const activeMarquees = await Marque.findOne({
   where: {
     startTime: {
@@ -146,6 +146,7 @@ const activeMarquees = await Marque.findOne({
 console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
 
 
+console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
 
     
    return res.render('index', {
