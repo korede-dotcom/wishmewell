@@ -4,7 +4,7 @@ const cloudinaryRepo = require("../repos/cloudinary");
 const RoomNumber = require("../models/RoomNumbers");
 const Room = require("../models/Room");
 const HotelBooking = require("../models/HotelBooking");
-const { Op,Sequelize, } = require("sequelize");
+const { Op,Sequelize } = require("sequelize");
 const moment = require("moment");
 const sequelize = require("sequelize");
 const Marque = require("../models/Marque");
@@ -108,25 +108,53 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     //   }
     // });
 
-    const [result] = await sequelize.query(`
-        SELECT *
-        FROM Marque
-        WHERE start_time <= NOW()
-          AND end_time >= NOW()
-        LIMIT 1;
-      `, {
-        type: sequelize.QueryTypes.SELECT, // Specify query type
-      });
-      
-      
-      console.log("🚀 ~ Raw query results:", result);
 
 
     // console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
+
+    // Get the current time
+const currentTime = new Date();
+
+// Format the date components
+const year = currentTime.getFullYear();
+const month = String(currentTime.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+const day = String(currentTime.getDate()).padStart(2, '0');
+const hours = String(currentTime.getHours()).padStart(2, '0');
+const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+const seconds = String(currentTime.getSeconds()).padStart(2, '0');
+const milliseconds = String(currentTime.getMilliseconds()).padStart(3, '0');
+
+// Get the timezone offset in "+HHMM" format
+const timezoneOffset = -currentTime.getTimezoneOffset(); // in minutes
+const sign = timezoneOffset >= 0 ? '+' : '-';
+const absOffset = Math.abs(timezoneOffset);
+const hoursOffset = String(Math.floor(absOffset / 60)).padStart(2, '0');
+const minutesOffset = String(absOffset % 60).padStart(2, '0');
+const timezone = `${sign}${hoursOffset}${minutesOffset}`;
+
+// Combine into the final format
+const formattedCurrentTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds} ${timezone}`;
+
+console.log("🚀 ~ clientHotelRoom ~ formattedCurrentTime:", formattedCurrentTime);
+
+// Use the formatted time in the Sequelize query
+const activeMarquees = await Marque.findOne({
+  where: {
+    startTime: {
+      [Op.lte]: formattedCurrentTime, // Adjusted current time
+    },
+    endTime: {
+      [Op.gte]: formattedCurrentTime,
+    },
+  },
+});
+
+console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
+
     
    return res.render('index', {
         pkgs: pkgs,
-        activeMarquees:result
+        activeMarquees:activeMarquees
       });
 })
 
