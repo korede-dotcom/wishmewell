@@ -120,15 +120,15 @@ const result = await connectDB.query(`
 
 
 
-console.log("🚀 ~ clientHotelRoom ~ result:", result);
+console.log("🚀 ~ clientHotelRoom ~ result:", result[0]);
 
 
-console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
+// console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
 
     
    return res.render('index', {
         pkgs: pkgs,
-        activeMarquees:activeMarquees
+        activeMarquees:result[0]
       });
 })
 
