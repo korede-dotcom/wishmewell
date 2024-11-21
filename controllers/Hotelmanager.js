@@ -89,7 +89,10 @@ const getBookings = asynchandler( async (req,res) => {
 
 const clientHotelRoom = asynchandler(async (req,res) => {
     const pkgs = await hotelConfigRepository.roomCategorys()
-    const currentTime = new Date();
+    // const currentTime = new Date();
+    const currentTime = new Date().toISOString(); // Converts to UTC format
+    console.log("🚀 ~ clientHotelRoom ~ currentTime:", currentTime)
+
 
     // Fetch marquees where the current time is between start and end times
     
