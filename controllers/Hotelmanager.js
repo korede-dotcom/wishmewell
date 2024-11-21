@@ -90,10 +90,15 @@ const getBookings = asynchandler( async (req,res) => {
 const clientHotelRoom = asynchandler(async (req,res) => {
     const pkgs = await hotelConfigRepository.roomCategorys()
     // const currentTime = new Date();
-    const currentTime = new Date().toLocaleString('en-US', { timeZone: 'Africa/Lagos' });
-    const formattedCurrentTime = new Date(currentTime).toISOString(); // Format to UTC
+    const { format, utcToZonedTime } = require('date-fns-tz');
+
+    const timeZone = 'Africa/Lagos'; // Adjust to your DB's timezone
+    const zonedTime = utcToZonedTime(new Date(), timeZone); // Convert current UTC to Lagos time
+    console.log("🚀 ~ clientHotelRoom ~ zonedTime:", zonedTime)
+    const formattedCurrentTime = format(zonedTime, "yyyy-MM-dd HH:mm:ss.SSS XXX");
     
     console.log("🚀 ~ clientHotelRoom ~ currentTime:", formattedCurrentTime);
+    
 
 
     // Fetch marquees where the current time is between start and end times
