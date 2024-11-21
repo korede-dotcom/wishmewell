@@ -87,7 +87,7 @@
 			.then(response => response.json())
 			.then(data => {
 				// Handle the response here
-				if (data.success) {
+				if (data.data) {
 					alert('Room added successfully!');
 					// Optionally, you can redirect the user or clear the form
 				} else {
