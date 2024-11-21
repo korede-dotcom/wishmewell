@@ -232,8 +232,8 @@
 		for (const file of files) {
 			const imageData = new FormData();
 			imageData.append('file', file);
-			imageData.append('upload_preset', 'Wishmewell Apartment'); // Replace with your actual Cloudinary upload preset
-			imageData.append('folder', 'samebrothers'); // Your folder name
+			imageData.append('upload_preset', 'wishmewell'); // Replace with your actual Cloudinary upload preset
+			imageData.append('folder', 'wishmewell'); // Your folder name
 	
 			try {
 				const cloudinaryResponse = await fetch(`https://api.cloudinary.com/v1_1/bada/image/upload`, {
