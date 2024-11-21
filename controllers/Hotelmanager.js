@@ -90,23 +90,35 @@ const getBookings = asynchandler( async (req,res) => {
 const clientHotelRoom = asynchandler(async (req,res) => {
     const pkgs = await hotelConfigRepository.roomCategorys()
     // const currentTime = new Date();
-    const currentTime = new Date().toISOString();
- // Converts to UTC format
-    console.log("🚀 ~ clientHotelRoom ~ currentTime:", currentTime)
+    const currentTime = new Date().toLocaleString('en-US', { timeZone: 'Africa/Lagos' });
+    const formattedCurrentTime = new Date(currentTime).toISOString(); // Format to UTC
+    
+    console.log("🚀 ~ clientHotelRoom ~ currentTime:", formattedCurrentTime);
 
 
     // Fetch marquees where the current time is between start and end times
     
+    // const activeMarquees = await Marque.findOne({
+    //   where: {
+    //     startTime: {
+    //       [Op.lte]: currentTime  // Less than or equal to current time
+    //     },
+    //     endTime: {
+    //       [Op.gte]: currentTime   // Greater than or equal to current time
+    //     }
+    //   }
+    // });
+
     const activeMarquees = await Marque.findOne({
-      where: {
-        startTime: {
-          [Op.lte]: currentTime  // Less than or equal to current time
+        where: {
+          startTime: {
+            [Op.lte]: formattedCurrentTime, // Adjusted current time
+          },
+          endTime: {
+            [Op.gte]: formattedCurrentTime,
+          },
         },
-        endTime: {
-          [Op.gte]: currentTime   // Greater than or equal to current time
-        }
-      }
-    });
+      });
 
     console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
     
