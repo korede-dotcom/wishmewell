@@ -90,15 +90,9 @@ const getBookings = asynchandler( async (req,res) => {
 const clientHotelRoom = asynchandler(async (req,res) => {
     const pkgs = await hotelConfigRepository.roomCategorys()
     // const currentTime = new Date();
-    const { format, utcToZonedTime } = require('date-fns-tz');
 
-    const timeZone = 'Africa/Lagos'; // Adjust to your DB's timezone
-    const zonedTime = utcToZonedTime(new Date(), timeZone); // Convert current UTC to Lagos time
-    console.log("🚀 ~ clientHotelRoom ~ zonedTime:", zonedTime)
-    const formattedCurrentTime = format(zonedTime, "yyyy-MM-dd HH:mm:ss.SSS XXX");
-    
-    console.log("🚀 ~ clientHotelRoom ~ currentTime:", formattedCurrentTime);
-    
+
+ 
 
 
     // Fetch marquees where the current time is between start and end times
@@ -114,22 +108,21 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     //   }
     // });
 
-    const activeMarquees = await Marque.findOne({
-        where: {
-          startTime: {
-            [Op.lte]: formattedCurrentTime, // Adjusted current time
-          },
-          endTime: {
-            [Op.gte]: formattedCurrentTime,
-          },
-        },
-      });
+    const [results] = await sequelize.query(`
+        SELECT *
+        FROM Marque
+        WHERE start_time <= NOW()
+          AND end_time >= NOW();
+      `);
+      
+      console.log("🚀 ~ Raw query results:", results);
 
-    console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
+
+    // console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
     
    return res.render('index', {
         pkgs: pkgs,
-        activeMarquees:activeMarquees
+        activeMarquees:null
       });
 })
 
