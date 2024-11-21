@@ -110,18 +110,24 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     // });
 
 
-    const currentTimeUTC = new Date().toISOString(); // This gives you the current UTC time
-    console.log("🚀 ~ clientHotelRoom ~ currentTimeUTC:", currentTimeUTC);
+    const moment = require('moment');
+
+    // Get current time and format it to match the DB format
+    const currentTime = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ'); // Example: '2024-11-21T20:03:27.130+0100'
     
+    console.log("🚀 ~ clientHotelRoom ~ formattedCurrentTime:", currentTime);
+    
+    // Now, use this formatted current time in your SQL query
     const result = await connectDB.query(`
-      SELECT *
-      FROM marques
-      WHERE "startTime" <= '${currentTimeUTC}'
-      AND "endTime" >= '${currentTimeUTC}'
-      LIMIT 1;
+        SELECT *
+        FROM marques
+        WHERE "startTime" <= '${currentTime}'
+        AND "endTime" >= '${currentTime}'
+        LIMIT 1;
     `, { type: Sequelize.QueryTypes.SELECT });
     
     console.log("🚀 ~ clientHotelRoom ~ result:", result);
+    
     
 
 
