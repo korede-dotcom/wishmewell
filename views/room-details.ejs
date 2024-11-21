@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from kodesolution.com/html/2023/hoexr-html/room-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Aug 2023 12:36:13 GMT -->
+<head>
+	<meta charset="utf-8">
+	<title>Wishmewell Apartment</title>
+	<!-- Stylesheets -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+	<!-- Responsive -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+	<style>
+	
+	@media screen and (max-width: 500px) {
+  .one {
+    display: none !important;
+  }
+  .two {
+    display: block !important;
+  }
+}
+
+	</style>
+</head>
+
+<body>
+<div class="page-wrapper">
+	<!-- Preloader -->
+	<div class="preloader"></div>
+
+  <!-- Main Header-->
+  <%- include('partials/header', { title: 'Wishmewell Apartment',activeMarquees:activeMarquees }) %>
+
+	<!--End Main Header -->
+
+	<!-- Start main-content -->
+	<section class="page-title" style="background-image: url(images/background/page-title-bg.png);">
+		<div class="auto-container">
+			<div class="title-outer text-center">
+				<h1 class="title"><%= selectedRoomNumber.room_name %> Details</h1>
+				<ul class="page-breadcrumb">
+					<li><!--<a href="index-3.html"></a>--> <%= selectedRoomNumber.roomcategory.category_name %></li>
+					<li><%= selectedRoomNumber.room_number %></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- end main-content -->
+
+	<!--Blog Details Start-->
+	<section class="blog-details">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-8 col-lg-7 product-details rd-page">
+					<!-- Carousel -->
+					<div id="roomCarousel" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<!-- Loop over pictures for carousel items -->
+							<% selectedRoomNumber.roomcategory.picture.forEach((pkg, index) => { %>
+							<div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+								<figure class="image-box">
+									<a href="<%= pkg %>" class="lightbox-image" data-fancybox="gallery">
+										<img src="<%= pkg %>" alt="" class="d-block w-100">
+									</a>
+								</figure>
+							</div>
+							<% }); %>
+						</div>
+						<!-- Carousel controls -->
+						<button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+	
+					<!-- Thumbnails -->
+					<div class="slider-pager mt-3" style="border-radius: 50%;">
+						<ul class="thumb-box d-flex list-inline">
+							<% selectedRoomNumber.roomcategory.picture.forEach((pkg, index) => { %>
+								<li class="list-inline-item">
+									<a href="#" data-bs-target="#roomCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>">
+										<figure><img src="<%= pkg %>" alt="" class="img-thumbnail"></figure>
+									</a>
+								</li>
+							<% }); %>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-lg-5">
+					<div class="sidebar one">
+						<h5>Give us your details</h5>
+						<div id="payment_status"></div>
+						<div class="sidebar__post mb-30">
+							
+							<form id="payment_form" name="contact_form" class="" >
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Check In</label>
+											<input readonly value="<%= start %>"  name="start" class="form-control bg-white" type="text" placeholder="Arrive Date">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Check Out</label>
+											<input readonly value="<%= end %>" name="end" class="form-control bg-white" type="text" placeholder="Check Out">
+										</div>
+									</div>
+									<!-- <div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Guests</label>
+									    <select   value=""  class="form-select form-control bg-white">
+									     
+									    </select>
+										</div>
+									</div> -->
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Full name</label>
+											<input name="guest_name" class="form-control bg-white" type="text" placeholder="Full Name">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Phone</label>
+											<input name="guest_phone" class="form-control bg-white" type="text" placeholder="Phone">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Email</label>
+											<input name="guest_email" class="form-control bg-white" type="text" placeholder="Email">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">address</label>
+											<input name="guest_address" class="form-control bg-white" type="text" placeholder="address">
+										</div>
+									</div>
+								</div>
+								<div class="mb-3">
+									<!-- <input name="form_botcheck" class="form-control" type="hidden" value=""> -->
+									<button type="submit" class="theme-btn btn-style-one w-100" data-loading-text="Please wait..."><span class="btn-title">Book Now</span></button>
+								</div>
+							</form>
+						</div>
+						<div class="sidebar__single sidebar__post">
+							
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			
+	
+				<!-- Room details -->
+				<div class="room-details__left">
+					<div class="wrapper">
+						<h3>Description of Room</h3>
+						<p class="text"><%= selectedRoomNumber.roomcategory.description %></p>
+						<div class="row justify-content-center">
+							<div class="col-xl-12">
+								<div class="room-details__content-right mb-40 mt-20">
+									<div class="room-details__details-box">
+										<div class="row">
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Room Type</p>
+												<h6><%= selectedRoomNumber.roomcategory.room_type %></h6>
+											</div>
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Rooms Bed</p>
+												<h6><%= selectedRoomNumber.roomcategory.num_beds %></h6>
+											</div>
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Occupancy</p>
+												<h6><%= selectedRoomNumber.roomcategory.number_of_guests %></h6>
+											</div>
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Food</p>
+												<h6><%= selectedRoomNumber.roomcategory.food %></h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<h2 class="text">
+							<h4>Room Price</h4>
+							<h3>#<%= selectedRoomNumber.roomcategory.price %> </h3>
+							<p>for a night</p>
+						</h2>
+					</div>
+	
+					<div class="mt-40">
+						<h4>Room Facilities</h4>
+						<div class="row room-facility-list mb-40">
+							<% if (selectedRoomNumber.roomcategory.has_ac) { %>
+							<div class="col-sm-6 col-xl-4">
+								<div class="list-one d-flex align-items-center me-sm-4 mb-3">
+									<div class="icon text-theme-color1 mr-10 flex-shrink-0"><i class="far fa-air-conditioner"></i></div>
+									<h6 class="title m-0">Air Conditioner</h6>
+								</div>
+							</div>
+							<% } %>
+							<% if (selectedRoomNumber.roomcategory.has_wifi) { %>
+							<div class="col-sm-6 col-xl-4">
+								<div class="list-one d-flex align-items-center me-sm-4 mb-3">
+									<div class="icon text-theme-color1 mr-10 flex-shrink-0"><i class="far fa-wifi"></i></div>
+									<h6 class="title m-0">Wifi</h6>
+								</div>
+							</div>
+							<% } %>
+						</div>
+					</div>
+
+
+				<div class="col-xl-4 col-lg-5">
+					<div class="sidebar two" style="display: none;">
+						<h5>Give us your details</h5>
+						<div id="payment_status"></div>
+						<div class="sidebar__post mb-30">
+							
+							<form id="payment_form" name="contact_form" class="" >
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Check In</label>
+											<input readonly value="<%= start %>"  name="start" class="form-control bg-white" type="text" placeholder="Arrive Date">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Check Out</label>
+											<input readonly value="<%= end %>" name="end" class="form-control bg-white" type="text" placeholder="Check Out">
+										</div>
+									</div>
+									<!-- <div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Guests</label>
+									    <select   value=""  class="form-select form-control bg-white">
+									     
+									    </select>
+										</div>
+									</div> -->
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Full name</label>
+											<input name="guest_name" class="form-control bg-white" type="text" placeholder="Full name">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Phone</label>
+											<input name="guest_phone" class="form-control bg-white" type="text" placeholder="Phone">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">Email</label>
+											<input name="guest_email" class="form-control bg-white" type="text" placeholder="Email">
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="mb-3">
+									    <label class="form-label">address</label>
+											<input name="guest_address" class="form-control bg-white" type="text" placeholder="address">
+										</div>
+									</div>
+								</div>
+								<div class="mb-3">
+									<!-- <input name="form_botcheck" class="form-control" type="hidden" value=""> -->
+									<button type="submit" class="theme-btn btn-style-one w-100" data-loading-text="Please wait..."><span class="btn-title">Book Now</span></button>
+								</div>
+							</form>
+						</div>
+						<div class="sidebar__single sidebar__post">
+							
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				</div>
+
+				
+			</div>
+		</div>
+	</section>
+	<!--Blog Details End-->
+
+  <!-- Main Footer -->
+  <%- include('partials/footer') %>
+  <!--End Main Footer -->
+
+</div><!-- End Page Wrapper -->
+<!-- Scroll To Top -->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/bxslider.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/script.js"></script>
+<!-- form submit -->
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.form.min.js"></script>
+<script>
+// (function($) {
+// 	$("#contact_form").validate({
+// 		submitHandler: function(form) {
+// 			var form_btn = $(form).find('button[type="submit"]');
+// 			var form_result_div = '#form-result';
+// 			$(form_result_div).remove();
+// 			form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+// 			var form_btn_old_msg = form_btn.html();
+// 			form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+// 			$(form).ajaxSubmit({
+// 				dataType: 'json',
+// 				success: function(data) {
+// 					if (data.status == 'true') {
+// 						$(form).find('.form-control').val('');
+// 					}
+// 					form_btn.prop('disabled', false).html(form_btn_old_msg);
+// 					$(form_result_div).html(data.message).fadeIn('slow');
+// 					setTimeout(function() { $(form_result_div).fadeOut('slow') }, 6000);
+// 				}
+// 			});
+// 		}
+// 	});
+// })(jQuery);
+document.getElementById('payment_form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Extract the 'id' from the URL
+  const url = new URL(window.location.href);
+  const id = url.searchParams.get('id');
+
+  // Create a FormData object from the form
+  const formData = new FormData(this);
+
+  // Convert FormData to a plain object
+  const formObject = Object.fromEntries(formData.entries());
+
+  // Send the form data using Fetch API
+  fetch('/payments/paystack/initialize', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({...formObject, category_id: id,room_number:`<%= selectedRoomNumber.room_number%>`,category_name:`<%=selectedRoomNumber.roomcategory.category_name%>`,room_name:`<%= selectedRoomNumber.room_name %> `,room_id:`<%= selectedRoomNumber._id%>`})
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Handle the response data
+    console.log('Success:', data);
+    if (data.data.authorization_url) {
+      // Create an anchor element
+      const a = document.createElement('a');
+      a.href = data.data.authorization_url;
+      a.style.display = 'none'; // Hide the anchor element
+      document.body.appendChild(a); // Append the anchor to the body
+      a.click(); // Programmatically click the anchor
+    } else {
+      // Handle the case where the authorization URL is not available
+      document.getElementById('payment_status').innerText = 'Failed to initialize payment. Please try again.';
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    // Display error message
+    document.getElementById('payment_status').innerText = 'An error occurred during payment initialization.';
+  });
+});
+
+
+</script>
+</body>
+
+<!-- Mirrored from kodesolution.com/html/2023/hoexr-html/room-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Aug 2023 12:36:17 GMT -->
+</html>

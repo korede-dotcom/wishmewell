@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Wishmewell Apartment</title>
+	<!-- Stylesheets -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+	<!-- Responsive -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/flatpickr.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="css/slick.css">
+
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+  <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+	<style>
+		.container {
+			margin-top: -210px !important;
+		}
+		
+		@media  screen and (min-width:40em){
+			.two{
+				display: none !important;
+			}
+		}
+		@media  screen and (max-width:40em){
+			.one{
+				display: none !important;
+			}
+		}
+	</style>
+</head>
+
+<body>
+<div class="page-wrapper">
+	<!-- Preloader -->
+	<div class="preloader"></div>
+
+  <!-- Main Header-->
+  <%- include('partials/header', { title: 'Wishmewell Apartment',activeMarquees:activeMarquees }) %>
+
+	<!--End Main Header -->
+
+	<!-- Start main-content -->
+	<section class="page-title" style="background-image: url(images/background/page-title-bg.png);">
+		<div class="auto-container">
+			<div class="title-outer text-center">
+				<h1 class="title"><%= category.room_name %> Details</h1>
+				<ul class="page-breadcrumb">
+					<li><!--<a href="index-3.html"></a>--> <%= category.category_name %></li>
+					<li><%= category.room_number %></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- end main-content -->
+
+	<!--Blog Details Start-->
+	<section class="blog-details">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-8 col-lg-7 product-details rd-page">
+					<!-- Carousel -->
+					<div id="roomCarousel" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<!-- Loop over pictures for carousel items -->
+							<% category.picture.forEach((pkg, index) => { %>
+							<div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+								<figure class="image-box">
+									<a href="<%= pkg %>" class="lightbox-image" data-fancybox="gallery">
+										<img src="<%= pkg %>" alt="" class="d-block w-100">
+									</a>
+								</figure>
+							</div>
+							<% }); %>
+						</div>
+						<!-- Carousel controls -->
+						<button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+	
+					<!-- Thumbnails -->
+					<div class="slider-pager mt-3" style="border-radius: 50%;">
+						<ul class="thumb-box d-flex list-inline">
+							<% category.picture.forEach((pkg, index) => { %>
+								<li class="list-inline-item">
+									<a href="#" data-bs-target="#roomCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>">
+										<figure><img src="<%= pkg %>" alt="" class="img-thumbnail"></figure>
+									</a>
+								</li>
+							<% }); %>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-lg-5">
+					<div class="sidebar one">
+						<h5>Check Availability</h5>
+						<div id="payment_status"></div>
+						<div class="sidebar__post mb-30">
+							
+              <form id="payment_form" name="contact_form" class="payment_form" >
+                <style>
+                  .form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #c19b76;
+  box-shadow: 0 0 5px rgba(148, 8, 26, 0.5);
+}
+
+.date-pick::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.checkininputs {
+  background-color: #f8f9fa;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+                </style>
+								<div class="row">
+									<div class="col-sm-12">
+                    <div class="mb-3">
+                      <label class="form-label" for="checkin-date">Check In</label>
+                      <input id="checkin-date" name="start" required class="form-control checkininputs" type="date" placeholder="Check in date" />
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="mb-3">
+                      <label class="form-label" for="checkout-date">Check Out</label>
+                      <input id="checkout-date" required class="form-control checkoutinput" type="date" placeholder="Check out date" />
+
+                  </div>
+                </div>
+                  
+									
+								<div class="mb-3">
+									<!-- <input name="form_botcheck" class="form-control" type="hidden" value=""> -->
+									<button id="checkAvailability" type="submit" class="theme-btn btn-style-one w-100" data-loading-text="Please wait..."><span class="btn-title">Book Now</span></button>
+								</div>
+							</form>
+						</div>
+						<!-- <div class="sidebar__single sidebar__post">
+							
+
+							</ul> -->
+						</div>
+					</div>
+				</div>
+
+			
+	
+				<!-- Room details -->
+				<div class="room-details__left">
+					<div class="wrapper">
+						<h3>Description of Room</h3>
+						<p class="text"><%= category.description %></p>
+						<div class="row justify-content-center">
+							<div class="col-xl-12">
+								<div class="room-details__content-right mb-40 mt-20">
+									<div class="room-details__details-box">
+										<div class="row">
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Room Type</p>
+												<h6><%= category.room_type %></h6>
+											</div>
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Rooms Bed</p>
+												<h6><%= category.num_beds %></h6>
+											</div>
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Occupancy</p>
+												<h6><%= category.number_of_guests %></h6>
+											</div>
+											<div class="col-6 col-md-3">
+												<p class="text mb-0">Food</p>
+												<h6><%= category.food %></h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<h2 class="text">
+							<h4>Room Price</h4>
+							<h3>#<%= category.price %> </h3>
+							<p>for a night</p>
+						</h2>
+					</div>
+	
+					<div class="mt-40">
+						<h4>Room Facilities</h4>
+						<div class="row room-facility-list mb-40">
+							<% if (category.has_ac) { %>
+							<div class="col-sm-6 col-xl-4">
+								<div class="list-one d-flex align-items-center me-sm-4 mb-3">
+									<div class="icon text-theme-color1 mr-10 flex-shrink-0"><i class="far fa-air-conditioner"></i></div>
+									<h6 class="title m-0">Air Conditioner</h6>
+								</div>
+							</div>
+							<% } %>
+							<% if (category.has_wifi) { %>
+							<div class="col-sm-6 col-xl-4">
+								<div class="list-one d-flex align-items-center me-sm-4 mb-3">
+									<div class="icon text-theme-color1 mr-10 flex-shrink-0"><i class="far fa-wifi"></i></div>
+									<h6 class="title m-0">Wifi</h6>
+								</div>
+							</div>
+							<% } %>
+						</div>
+					</div>
+
+
+				<div class="col-xl-4 col-lg-5">
+					<div class="sidebar two">
+						<h5>Check Availability</h5>
+						<div id="payment_status"></div>
+						<div class="sidebar__post mb-30">
+							
+							<form id="payment_form" name="contact_form" class="payment_form" >
+								<div class="row">
+                  <div class="col-sm-12">
+                    <div class="mb-3">
+                      <label class="form-label" for="checkin-date">Check In</label>
+                      <input id="checkin-date" name="start" required class="form-control checkininputs" type="date" placeholder="Check in date" />
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="mb-3">
+                      <label class="form-label" for="checkout-date">Check Out</label>
+                      <input id="checkout-date" required class="form-control checkoutinput" type="date" placeholder="Check out date" />
+
+                  </div>
+						
+								</div>
+								<div class="mb-3">
+									<!-- <input name="form_botcheck" class="form-control" type="hidden" value=""> -->
+									<button id="checkAvailability" type="submit" class="theme-btn btn-style-one w-100" data-loading-text="Please wait..."><span class="btn-title">Book Now</span></button>
+								</div>
+							</form>
+						</div>
+						<!-- <div class="sidebar__single sidebar__post">
+							
+
+							</ul>
+						</div> -->
+					</div>
+				</div>
+
+				</div>
+
+				
+			</div>
+		</div>
+	</section>
+	
+	<!--Blog Details End-->
+
+  <!-- Main Footer -->
+  <%- include('partials/footer') %>
+  <!--End Main Footer -->
+
+</div><!-- End Page Wrapper -->
+<!-- Scroll To Top -->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/bxslider.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/script.js"></script>
+<!-- form submit -->
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.form.min.js"></script>
+<script>
+ document.querySelectorAll('.payment_form').forEach(d => {
+  d.addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    function formatDate(dateStr) {
+      const [year, month, day] = dateStr.split('-'); // Split by "-"
+      return `${day}-${month}-${year}`; // Rearrange to DD-MM-YYYY
+    }
+
+    // Get the values from the form fields
+    const checkInDate = event.target.querySelector('.checkininputs').value;
+    const checkOutDate = event.target.querySelector('.checkoutinput').value;
+    
+    // Debugging to check values
+    console.log("Check-in Date:", checkInDate);
+    console.log("Check-out Date:", checkOutDate);
+
+    if (!checkInDate || !checkOutDate) {
+      // Display an alert if either date is missing
+      alert('Please fill in both check-in and check-out dates.');
+      return;
+    }
+    
+    const formattedCheckInDate = formatDate(checkInDate);
+    const formattedCheckOutDate = formatDate(checkOutDate);
+
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get('id');
+    const loginBtn = document.getElementById('checkAvailability');
+    
+    // Show the loader
+    loginBtn.innerHTML = '<span class="loader"></span>';
+    loginBtn.disabled = true;
+
+    // Create an object with the form data
+    const formData = {
+      start: formattedCheckInDate,
+      end: formattedCheckOutDate,
+      category_id: parseInt(id)
+    };
+    console.log("Form Data:", formData);
+
+    try {
+      // Post the form data to the /check-availability endpoint
+      const response = await fetch(`/check-availability/?end=${formData.end}&start=${formData.start}&category_id=${formData.category_id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      function toster(message, color) {
+        Toastify({
+          text: message,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "center",
+          style: { background: color },
+        }).showToast();
+      }
+
+      // Handle the response from the server
+      if (response.ok) {
+        const data = await response.json();
+        loginBtn.innerHTML = 'check now';
+        loginBtn.disabled = false;
+
+        if (data?.data.availableRoomDetails.length > 0) {
+          toster(data.message, "green");
+          const all = data.data.availableRoomDetails.map(data => `${data.room_number}`);
+          setTimeout(() => {
+            window.location.href = `/available-rooms?id=${data.data.category_id}&data=${all.toString()}&start=${formData.start}&end=${formData.end}`;
+          }, 1000);
+        } else {
+          loginBtn.innerHTML = "Submit";
+          toster(data.message, "red");
+        }
+      } else {
+        loginBtn.innerHTML = "Submit";
+        toster(response.statusText, "red");
+      }
+    } catch (error) {
+      loginBtn.innerHTML = "Submit";
+      toster(error.message, "red");
+      console.error('Error:', error);
+    }
+  });
+});
+
+</script>
+</body>
+
+<!-- Mirrored from kodesolution.com/html/2023/hoexr-html/room-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Aug 2023 12:36:17 GMT -->
+</html>

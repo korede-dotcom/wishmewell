@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from kodesolution.com/html/2023/Wishmewell Apartment-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Aug 2023 12:33:35 GMT -->
+<head>
+<meta charset="utf-8">
+<title>Wishmewell Apartment </title>
+<!-- Stylesheets -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/flatpickr.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="css/slick.css">
+
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+  <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<style>
+		.loader {
+			width: 24px;
+			height: 24px;
+			border: 3px solid #FFF;
+			border-bottom-color: #FF3D00;
+			border-radius: 50%;
+			display: inline-block;
+			box-sizing: border-box;
+			animation: rotation 1s linear infinite;
+		}
+
+		@keyframes rotation {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		} 
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+
+    /* Set video to cover the container */
+    video {
+      width: 100%;
+      height: auto;
+      transform: scale(1);
+      transition: transform 1s ease-in-out;
+      animation: zoomEffect 10s infinite alternate;
+      box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5); 
+      filter: brightness(0.7);
+    }
+
+    /* Zoom animation */
+    @keyframes zoomEffect {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.2); /* Zoom to 1.2x */
+      }
+    }
+
+    /* Add media query for mobile devices */
+    @media (max-width: 768px) {
+      .video-container {
+        height: 100%;
+      }
+      .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      overflow: hidden; /* Hide any overflow */
+    }
+
+    /* Ensure the video fills the container and covers the screen */
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures video covers the entire container */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+      /* video {
+        width: 100vw; 
+        height: auto;
+        transform: scale(1);
+      } */
+
+      @keyframes zoomEffect {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.2); /* Zoom to 1.2x */
+      }
+    }
+      
+
+
+     
+    }
+
+
+
+/* Typewriter Effect */
+.typewriter-text {
+    font-size: 30px;
+    font-family: monospace;
+    border-right: 2px solid #000;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from { border-color: transparent; }
+    to { border-color: black; }
+}
+
+/* Hover 3D Pop-Out Effect */
+.popout-text {
+    font-size: 50px;
+    font-weight: bold;
+    color: #333;
+    transition: 0.3s;
+}
+
+.popout-text:hover {
+    transform: translateY(-10px);
+    color: #1da1f2;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+    </style>
+ 
+	</style>
+
+  <script>
+    
+  </script>
+  
+</head>
+
+<body>
+<div class="page-wrapper">
+
+  <!-- Main Header-->
+
+  <%- include('partials/header', { title: 'Wishmewell Apartment',activeMarquees:activeMarquees }) %>
+	<!--End Main Header -->
+
+  <!-- banner section -->
+  <section class="banner-section">
+
+    <div class="banner-slider">
+     
+      <div class="banner-slide" data-delay-in="0.9">
+        <!-- <figure class="image"><img src="https://i.imgur.com/5Nw1kiL.jpeg" alt=""></figure> -->
+        <figure class="image">
+          <div class="video-container">
+            <video src="https://res.cloudinary.com/bada/video/upload/v1732141362/WhatsApp_Video_2024-11-09_at_14.43.49_pgfm3k.mp4" autoplay muted loop></video>
+          </div>
+        </figure>
+        <div class="content-box">
+          
+          <!-- <span class="sub-titled"  data-delay-in="0.1">unique place and luxury hotel</span> -->
+         
+          <style>
+          
+            .landing-page {
+              font-family: 'Poppins', sans-serif;
+      text-align: center;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 3.5rem; /* Main heading size */
+      text-transform: uppercase;
+      font-weight: 600;
+      animation: pop-up 1.5s ease-out forwards;
+      opacity: 0; /* Initially hidden */
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-top: -15px;
+      animation: fade-in 2.5s ease-out forwards;
+      opacity: 0; /* Initially hidden */
+    }
+
+    /* Keyframes for the pop-up effect */
+    @keyframes pop-up {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Keyframes for fade-in */
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Optional subtle shadow for text */
+    h1, h3 {
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+          </style>
+
+<div class="landing-page">
+  <h1>Wishmewell Apartment</h1>
+  <h3>Your luxury, our care.</h3>
+</div>
+          <!-- <div class="">
+            <h1 class="lp" style="">
+              Wishmewell Apartment <span style="color: #FFF;"></span>
+            </br>
+          </h1>
+          <h3 class="" style="margin-top: -30px;color: #fff;font-style: italic;">Your luxury our care..</h3>
+
+          </div> -->
+
+         
+          
+          
+   
+   
+          <!-- <a href="page-about.html" class="btn" data-animation-in="fadeInUp" data-delay-in="0.5">rooms & suites</a> -->
+        </div>
+      </div>
+     
+   
+    </div>
+    <div class="checkout-form-section wow slideInUp">
+      <div class="auto-container">
+        <form class="checkout-form">
+          <div class="checkout-field">
+            <h6>Check in</h6>
+            <div class="chk-field">
+              <input required class="date-pick checkininput" type="text" placeholder="check in date" />
+              <i class="fa fa-calendar"></i>
+            </div>
+          </div>
+          <div class="checkout-field">
+            <h6>Check out</h6>
+            <div class="chk-field">
+              <input required class="date-pick checkoutinput" type="text" placeholder="check out date" />
+              <i class="fa fa-calendar"></i>
+            </div>
+          </div>
+          <div class="checkout-field br-0">
+            <h6>Room</h6>
+            <div class="chk-field">
+              <i class="fa fa-angle-down"></i>
+              <select required>
+               
+                <% pkgs.forEach(pkg => {    %>
+                  <option value=<%=pkg._id %>>
+                      <%=pkg.category_name %>
+                  </option>
+              <% }); %>
+               
+              </select>
+            </div>
+          </div>
+          <button  class="theme-btn btn-style-one" id="checkAvailability"><span class="btn-title">check now</span></button>
+       
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- End banner section -->
+
+
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="auto-container">
+      <div class="row">
+        <!-- Content Column -->
+        <div class="content-column col-xl-6 col-lg-6 order-lg-2 wow fadeInRight" data-wow-delay="600ms">
+          <div class="inner-column">
+            <div class="sec-title">
+              <span class="sub-title">Wishmewell Apartment</span>
+              <h2>Most Safe & Rated <br>Apartment in Lagos.</h2>
+              <div class="text">Discover the top-rated and safest hotel in Lagos, where comfort meets security. Experience exceptional hospitality, world-class amenities, and a commitment to guest safety. Enjoy peace of mind during your stay, knowing you're in a hotel with a reputation for excellence and the highest standards of service in Lagos.<br></div>
+            </div>
+            <div class="outer-box">
+              <div class="info-block">
+                <div class="inner">
+                  <div class="icon-box"><i class="flaticon-light"></i></div>
+                  <h4 class="title">The Best <br>Lighting</h4>
+                </div>
+              </div>
+              <!-- <div class="info-block">
+                <div class="inner">
+                  <div class="icon-box"><i class="flaticon-volume-up"></i></div>
+                  <h4 class="title">Room Sound<br>system </h4>
+                </div>
+              </div> -->
+            </div>
+            <div class="btn-box">
+              <a href="/page-contact" class="theme-btn btn-style-one"><span class="btn-title">Discover More</span></a>
+              <div class="contact-info">
+                <div class="icon-box"><i class="flaticon-customer-service"></i></div>
+                <span>Booking Now</span>
+                <h4 class="title">+2349111458637</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Column -->
+        <div class="image-column col-xl-6 col-lg-6">
+          <div class="inner-column wow fadeInLeft">
+            <figure class="image-1 overlay-anim wow fadeInUp"><img src="images/banner/banner-3.png" alt=""></figure>
+            <figure class="image-2 overlay-anim wow fadeInLeft"><img src="images/banner/banner-5.png" alt=""></figure>
+            <div class="btn-box">
+              <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" class="play-now-two" data-fancybox="gallery" data-caption="">
+                <i class="icon fa fa-play" aria-hidden="true"></i>
+                <span class="ripple"></span>
+              </a>
+            </div>
+            <!-- <div class="exp-box bounce-y">
+              <figure class=" overlay-anim wow fadeInLeft"><img src="images/resource/exp-icon.png" alt=""></figure>
+              <h4 class="title">Luxury Room</h4>
+              <div class="text">Donec in quis the asd <br>pellentesque velit. Donec id <br>velit arcu posuere blane.</div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Emd About Section -->
+
+  <!-- rooms-section -->
+  <section class="rooms-section pb-100">
+    <div class="auto-container">
+      <div class="sec-title text-center wow fadeInUp">
+        <span class="sub-title">Wishmewell Apartment Rooms</span>
+        <h2>Luxury Rooms & Suites</h2>
+      </div>
+    
+        <!-- room-block -->
+        <div class="row">
+          <style>
+             .image-2 img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+  }
+
+  /* Optional: Add some margin for small screens to better center */
+  @media (max-width: 576px) {
+    .room-block {
+      margin-bottom: 20px;
+
+    }
+    .image-2 img{
+      margin-inline: 10px;
+    }
+  }
+          </style>
+          
+          <div class="row">
+            <% pkgs.forEach(pkg => { %>
+              <!-- Each package as a column -->
+              <div class="room-block col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                <div class="inner-box wow fadeIn text-center">
+                  <div class="image-box">
+                    <figure class="image-2 overlay-anim">
+                      <img src="<%= pkg.picture[0] %>" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="content-box">
+                    <%= pkg.category_name.toUpperCase() %>
+                    <h6 class="title"><a href="/rooms?id=<%= pkg._id %>"><%= pkg.category_name %></a></h6>
+                    <span class="price">#<%= pkg.price %> / NIGHT</span>
+                  </div>
+                  <div class="box-caption">
+                    <a href="/rooms?id=<%= pkg._id %>" title="" class="book-btn">View</a>
+                    <ul class="bx-links">
+                      <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
+                      <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
+                      <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
+                      <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+          
+        </div>
+        
+        
+        <!-- room-block -->
+        <!-- <div class="room-block col-lg-6 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="200ms">
+            <div class="image-box">
+              <figure class="image-2 overlay-anim"><img src="images/resource/room-2.jpg" alt=""></figure>
+            </div>
+            <div class="content-box">
+              <h6 class="title"><a href="room-details.html">Family Room</a></h6>
+              <span class="price">200$ / NIGHT</span>
+            </div>
+            <div class="box-caption">
+              <a href="room-details.html" title="" class="book-btn">book now</a>
+              <ul class="bx-links">
+                <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <!-- room-block -->
+        <!-- <div class="room-block col-lg-3 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="300ms">
+            <div class="image-box">
+              <figure class="image-2 overlay-anim"><img src="images/resource/room-3.jpg" alt=""></figure>
+            </div>
+            <div class="content-box">
+              <h6 class="title"><a href="room-details.html">Double Room</a></h6>
+              <span class="price">250$ / NIGHT</span>
+            </div>
+            <div class="box-caption">
+              <a href="room-details.html" title="" class="book-btn">book now</a>
+              <ul class="bx-links">
+                <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <!-- room-block -->
+        <!-- <div class="room-block col-lg-6 col-md-6 col-sm-12">
+          <div class="inner-box large-style wow fadeIn" data-wow-delay="400ms">
+            <div class="image-box">
+              <figure class="image-2 overlay-anim"><img src="images/resource/room-4.jpg" alt=""></figure>
+            </div>
+            <div class="content-box">
+              <h6 class="title"><a href="room-details.html">Double Room</a></h6>
+              <span class="price">250$ / NIGHT</span>
+            </div>
+            <div class="box-caption">
+              <a href="room-details.html" title="" class="book-btn">book now</a>
+              <ul class="bx-links">
+                <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
+                <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <!-- room-block -->
+        <!-- <div class="room-block col-lg-3 col-md-6 col-sm-12">
+            <div class="inner-box wow fadeIn" data-wow-delay="500ms">
+              <div class="image-box">
+                <figure class="image-2 overlay-anim"><img src="images/resource/room-5.jpg" alt=""></figure>
+              </div>
+              <div class="content-box">
+                <h6 class="title"><a href="room-details.html">Deluxe Room</a></h6>
+                <span class="price">300$ / NIGHT</span>
+              </div>
+              <div class="box-caption">
+                <a href="room-details.html" title="" class="book-btn">book now</a>
+                <ul class="bx-links">
+                  <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
+                  <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
+                  <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
+                  <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                </ul>
+              </div>
+            </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+  <!-- End rooms-section -->
+
+  <!-- service-section -->
+  <section class="service-section">
+    <div class="auto-container">
+      <div class="sec-title text-center wow slideInUp">
+        <span class="sub-title">Wishmewell Apartment SERVICES</span>
+        <h2>Apartment Facilities</h2>
+      </div>
+      <div class="row">
+        <!-- service-block -->
+        <div class="service-block col-lg-4 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="100ms">
+            <div class="icon-box wow fadeInUp"><i class="flaticon-bed-2"></i></div>
+            <div class="content-box">
+              <h4 class="title"><a href="page-service-details.html">Room Service</a></h4>
+              <div class="text">we provide 24/7 room service to ensure your stay is as comfortable and enjoyable as possible. Whether you’re craving a delicious meal, a refreshing drink, or anything else you need, our team is here to assist.</div>
+            </div>
+          </div>
+        </div>
+        <!-- service-block -->
+        <div class="service-block col-lg-4 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="200ms">
+            <div class="icon-box wow fadeInUp"><i class="flaticon-travel"></i></div>
+            <div class="content-box">
+              <h4 class="title"><a href="page-service-details.html">Pick Up & Drop</a></h4>
+              <div class="text">Enjoy a hassle-free arrival and departure with our reliable pick-up and drop service. Whether you're coming from the airport, train station, or another location, we’re here to ensure your journey is smooth and comfortable.</div>
+            </div>
+          </div>
+        </div>
+        <!-- service-block -->
+        <div class="service-block col-lg-4 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="300ms">
+            <div class="icon-box wow fadeInUp"><i class="flaticon-wifi"></i></div>
+            <div class="content-box">
+              <h4 class="title"><a href="page-service-details.html">Fibre Internet</a></h4>
+              <div class="text">Stay connected with our high-speed fibre internet, available throughout the hotel. Whether you’re working remotely, streaming your favorite shows, or staying in touch with loved ones, our reliable internet ensures you’re always connected.</div>
+            </div>
+          </div>
+        </div>
+        <!-- service-block -->
+        <!-- <div class="service-block col-lg-4 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="400ms">
+            <div class="icon-box wow fadeInUp"><i class="flaticon-breakfast"></i></div>
+            <div class="content-box">
+              <h4 class="title"><a href="page-service-details.html">Breakfast</a></h4>
+              <div class="text">Orci varius natoque penatibus magnis ders disney parturient ridiculus</div>
+            </div>
+          </div>
+        </div> -->
+        <!-- service-block -->
+        <div class="service-block col-lg-4 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="500ms">
+            <div class="icon-box wow fadeInUp">
+              <img src="./images/resource/snooker.png" alt="" srcset="">
+            </div>
+            <div class="content-box">
+              <h4 class="title"><a href="page-service-details.html">Snooker</a></h4>
+              <div class="text">
+                Relax and enjoy a game of snooker in our dedicated snooker lounge. Whether you're a seasoned player or just looking for a fun way to unwind, our snooker facilities provide the perfect setting for friendly competition.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- service-block -->
+        <div class="service-block col-lg-4 col-md-6 col-sm-12">
+          <div class="inner-box wow fadeIn" data-wow-delay="600ms">
+            <div class="icon-box wow fadeInUp"><i class="flaticon-car"></i></div>
+            <div class="content-box">
+              <h4 class="title"><a href="page-service-details.html">Parking Space</a></h4>
+              <div class="text">we provide safe and convenient parking options for all our guests. Whether you're traveling by car, SUV, or motorbike, our secure parking facilities ensure peace of mind throughout your stay.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End service-section -->
+
+  <!-- video-section -->
+  <section class="video-section">
+    <div class="bg bg-image" style="background-image: url(images/background/1.jpg);"></div>
+    <div class="auto-container">
+      <div class="row">
+        <div class="content-column col-lg-9 col-md-12 col-sm-12">
+          <div class="inner-column">
+            <div class="sec-title-two light wow slideInUp">
+              <span class="sub-title">Promotional Video</span>
+              <h2> Book Hotal Rooms, <br>et Deals & Book Flights Online.</h2>
+            </div>
+          </div>
+        </div>
+        <div class="btn-column col-lg-3 col-md-12 col-sm-12">
+          <div class="inner-column">
+            <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" class="play-now-two" data-fancybox="gallery" data-caption="">
+              <!-- <img src="images/icons/play.png" alt="" /> -->
+                <i class="fa fa-play"></i>
+              </a>
+              <span class="ripple"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End video section -->
+
+  <!-- feature-section -->
+  <!-- <section class="feature-section">
+    <div class="auto-container">
+      <div class="row feature-row g-0 wow slideInUp" data-wow-delay="100ms">
+        <div class="image-column col-lg-4">
+          <div class="inner-column">
+            <div class="image-box">
+              <figure class="image overlay-anim"><img src="images/resource/feature-1.png" alt=""></figure>
+            </div>
+          </div>
+        </div>
+        <div class="content-column col-lg-8" >
+          <div class="inner-column">
+            <div class="content-box">
+              <div class="sec-title">
+                <span class="sub-title">MODERN</span>
+                <h2>Fitness Center</h2>
+                <div class="text">Restaurant inilla duiman at elit finibus viverra nec a  lacus themo the <br>nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru <br>the ivite dianne onen nivami acsestion augue artine.</div>
+              </div>
+              <a href="room-details.html" class="theme-btn btn-style-one read-more">Discover More</a>
+              <figure class="image-2"><img src="images/resource/icon.png" alt=""></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row feature-row g-0 wow slideInUp" data-wow-delay="200ms">
+        <div class="content-column col-lg-8">
+          <div class="inner-column">
+            <div class="content-box">
+              <div class="sec-title">
+                <span class="sub-title">DISCOVER</span>
+                <h2>The Restaurant</h2>
+                <div class="text">Restaurant inilla duiman at elit finibus viverra nec a 
+                lacus themo the <br>nesudea seneoice misuscipit non sagie the fermen
+                ziverra tristiue duru <br>the ivite dianne onen nivami acsestion augue artine.</div>
+              </div>
+              <a href="room-details.html" class="theme-btn btn-style-one read-more">Discover More</a>
+              <figure class="image-2"><img src="images/resource/icon-2.png" alt=""></figure>
+            </div>
+          </div>
+        </div>
+        <div class="image-column col-lg-4">
+          <div class="inner-column">
+            <div class="image-box">
+              <figure class="image overlay-anim"><img src="images/resource/feature-2.png" alt=""></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row feature-row g-0 wow slideInUp" data-wow-delay="300ms">
+       <div class="image-column col-lg-4">
+          <div class="inner-column">
+            <div class="image-box">
+              <figure class="image overlay-anim"><img src="images/resource/feature-3.jpg" alt=""></figure>
+            </div>
+          </div>
+        </div>
+        <div class="content-column col-lg-8">
+          <div class="inner-column">
+            <div class="content-box">
+              <div class="sec-title">
+                <span class="sub-title">EXPERIENCES</span>
+                <h2>Spa Center</h2>
+                <div class="text">Restaurant inilla duiman at elit finibus viverra nec a 
+                lacus themo the <br>nesudea seneoice misuscipit non sagie the fermen
+                ziverra tristiue duru <br>the ivite dianne onen nivami acsestion augue artine.</div>
+              </div>
+              <a href="room-details.html" class="theme-btn btn-style-one read-more">Discover More</a>
+              <figure class="image-2"><img src="images/resource/icon-3.png" alt=""></figure>
+            </div> 
+          </div>
+        </div> 
+      </div>
+    </div>
+  </section> -->
+  <!-- End feature section -->
+
+  <!-- testimonial-section -->
+  <!-- <section class="testimonial-section">
+    <div class="bg bg-image" style="background-image: url(images/background/testi-bg.jpg);"></div>
+    <div class="auto-container">
+      <div class="row">
+        <div class="col-lg-4 hide-on-tablet"></div>
+        <div class="testimonial-column col-lg-8 col-md-12">
+          <div class="inner-column">
+            <div class="sec-title light wow fadeInUp">
+              <span class="sub-title">What says for customer</span>
+              <h2> What Client's Say?</h2>
+            </div>
+            <div class="testimonial-slider wow fadeInUp">
+              <div class="testimonial-slide">
+                <div class="content-box">
+                  <div class="image-box" data-animation-in="fadeInLeft" data-delay-in="0.1">
+                    <figure class="thumb"><img src="images/resource/testi-1.jpg" alt=""></figure>
+                  </div>
+                  <div class="info-box">
+                    <ul class="rating-list" data-animation-in="fadeInUp" data-delay-in="0.2">
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                    </ul>
+                    <div class="text" data-animation-in="fadeInUp" data-delay-in="0.3">The utanislen quam nestibulum ac quame odion elementum sceisue
+                    the aucan. <br>Orci varius natoque penatibus
+                    et magnis disney parturient monte nascete ridiculus<br>
+                    mus nellen etesque habitant morbine.</div>
+                    <div class="auther-info" data-animation-in="fadeInUp" data-delay-in="0.4">
+                      <h4 class="title">Jackson Smith</h4>
+                      <span class="designation">Guest Review</span>
+                    </div>
+                    <div class="icon-box" data-animation-in="fadeInUp" data-delay-in="0.5"><figure class="image"><img src="images/resource/comas.png" alt=""></figure></div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <div class="content-box">
+                  <div class="image-box" data-animation-in="fadeInLeft" data-delay-in="0.1">
+                    <figure class="thumb"><img src="images/resource/testi-1.jpg" alt=""></figure>
+                  </div>
+                  <div class="info-box">
+                    <ul class="rating-list" data-animation-in="fadeInUp" data-delay-in="0.2">
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                    </ul>
+                    <div class="text" data-animation-in="fadeInUp" data-delay-in="0.3">The utanislen quam nestibulum ac quame odion elementum sceisue
+                    the aucan. <br>Orci varius natoque penatibus
+                    et magnis disney parturient monte nascete ridiculus<br>
+                    mus nellen etesque habitant morbine.</div>
+                    <div class="auther-info" data-animation-in="fadeInUp" data-delay-in="0.4">
+                      <h4 class="title">Jackson Smith</h4>
+                      <span class="designation">Guest Review</span>
+                    </div>
+                    <div class="icon-box" data-animation-in="fadeInUp" data-delay-in="0.5"><figure class="image"><img src="images/resource/comas.png" alt=""></figure></div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <div class="content-box">
+                  <div class="image-box" data-animation-in="fadeInLeft" data-delay-in="0.1">
+                    <figure class="thumb"><img src="images/resource/testi-1.jpg" alt=""></figure>
+                  </div>
+                  <div class="info-box">
+                    <ul class="rating-list" data-animation-in="fadeInUp" data-delay-in="0.2">
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                      <li><i class="fa-solid fa-star"></i></li>
+                    </ul>
+                    <div class="text" data-animation-in="fadeInUp" data-delay-in="0.3">The utanislen quam nestibulum ac quame odion elementum sceisue
+                    the aucan. <br>Orci varius natoque penatibus
+                    et magnis disney parturient monte nascete ridiculus<br>
+                    mus nellen etesque habitant morbine.</div>
+                    <div class="auther-info" data-animation-in="fadeInUp" data-delay-in="0.4">
+                      <h4 class="title">Jackson Smith</h4>
+                      <span class="designation">Guest Review</span>
+                    </div>
+                    <div class="icon-box" data-animation-in="fadeInUp" data-delay-in="0.5"><figure class="image"><img src="images/resource/comas.png" alt=""></figure></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- End testimonial section -->
+
+  <!-- pricing-section-two -->
+ 
+  <!-- End pricing-section-two -->
+
+  <!-- Team Section -->
+  <!-- <section class="team-section">
+    <div class="auto-container">
+      <div class="sec-title text-center wow fadeInUp">
+        <span class="sub-title">Wishmewell Apartment team</span>
+        <h2>Expert Team Persons</h2>
+      </div>
+      <div class="row">
+        <div class="team-block col-lg-3 col-sm-6">
+          <div class="inner-box wow fadeInLeft">
+            <div class="image-box">
+              <figure class="image overlay-anim"><a href="page-team-details.html"><img src="images/resource/team-1.jpg" alt=""></a></figure>
+              <div class="info-box">
+                <span class="designation">Event Platnner</span>
+                <h4 class="name"><a href="page-team-details.html">Michael Dean</a></h4>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team-block col-lg-3 col-sm-6">
+          <div class="inner-box wow fadeInLeft" data-wow-delay="200ms">
+            <div class="image-box">
+              <figure class="image overlay-anim"><a href="page-team-details.html"><img src="images/resource/team-2.jpg" alt=""></a></figure>
+              <div class="info-box">
+                <span class="designation">Kitchen Manager</span>
+                <h4 class="name"><a href="page-team-details.html">Frank Burton</a></h4>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team-block col-lg-3 col-sm-6">
+          <div class="inner-box wow fadeInLeft" data-wow-delay="300ms">
+            <div class="image-box">
+              <figure class="image overlay-anim"><a href="page-team-details.html"><img src="images/resource/team-3.jpg" alt=""></a></figure>
+              <div class="info-box">
+                <span class="designation">Apartment Manager</span>
+                <h4 class="name"><a href="page-team-details.html">Mya Mullins</a></h4>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team-block col-lg-3 col-sm-6">
+          <div class="inner-box wow fadeInLeft" data-wow-delay="400ms">
+            <div class="image-box">
+              <figure class="image overlay-anim"><a href="page-team-details.html"><img src="images/resource/team-4.jpg" alt=""></a></figure>
+              <div class="info-box">
+                <span class="designation">Room Service</span>
+                <h4 class="name"><a href="page-team-details.html">Ralph Nguyen</a></h4>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- BOOKING SECTION -->
+  <section class="booking-section">
+    <div class="auto-container">
+      <div class="row">
+        <div class="col-lg-6 booking-form-column wow fadeInUp">
+          <div class="inner-column">
+            <div class="sec-title">
+              <span class="sub-title">ROOMS & SUITES</span>
+              <h2>Apartment Booking </h2>
+            </div>
+            <form class="bk-form checkout-form2" id="checkAvailability">
+              <div class="frm-field">
+                <input type="text" name="start" class="date-pick checkininput" placeholder="Check in" />
+                <img src="images/icons/mail.png" alt="" />
+              </div>
+              <div class="frm-field">
+                <input type="text" name="end" class="date-pick checkoutinput" placeholder="Check out" />
+                <img src="images/icons/mail.png" alt="" />
+              </div>
+              
+              <div class="frm-field">
+                <select name="" id="">
+                  <% pkgs.forEach(pkg => {    %>
+                    <option value=<%=pkg._id %>>
+                        <%=pkg.category_name %>
+                    </option>
+                    <% }); %>
+                </select>
+                <i class="fa fa-angle-down"></i>
+              </div>
+              <div class="form-submit">
+                <button id="checkAvailability" type="submit">Check Availability</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-6 booking-content-column wow fadeInRight" data-wow-delay="200ms">
+          <div class="inner-column">
+            <div class="sec-title white">
+              <span class="sub-title">Wishmewell Apartment</span>
+              <h2>Check Availability </h2>
+            </div>
+            <p>Each of our guest rooms feature a private bath, wi-fi, cable/Smart television .</p>
+            <!-- <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p> -->
+            <div class="contact-info">
+              <div class="icon-box"><i class="flaticon-customer-service"></i></div>
+              <span>Booking Now</span>
+              <h4 class="title">+2349111458637</h4>
+              <h4 class="title">+2347070230039</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- BOOKING SECTION END -->
+
+  <!-- news-section -->
+  <!-- <section class="news-section">
+    <div class="auto-container">
+      <div class="sec-title text-center wow fadeInUp">
+        <span class="sub-title">Wishmewell Apartment News</span>
+        <h2>Latest News Update</h2>
+      </div>
+      <div class="row">
+        <div class="news-block col-lg-4 col-md-6 wow fadeInUp">
+          <div class="inner-box wow fadeInLeft">
+            <div class="image-box">
+              <figure class="image overlay-anim"><a href="news-details.html"><img src="images/resource/news-1.jpg" alt=""></a></figure>
+              <span class="date">DEC<br><small>20</small></span>
+            </div>
+            <div class="content-box">
+              <ul class="post-info">
+                <li><i class="fa fa-user"></i>Admin</li>
+                <li><i class="fa fa-comments"></i>October 19, 2022</li>
+              </ul>
+              <h4 class="title"><a href="news-details.html">Retore Lighting Design <br>in The Apartment</a></h4>
+              <a href="news-details.html" class="read-more">Read More<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="news-block col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+          <div class="inner-box wow fadeInLeft" data-wow-delay="200ms">
+            <div class="image-box">
+              <figure class="image overlay-anim"><a href="news-details.html"><img src="images/resource/news-2.jpg" alt=""></a></figure>
+              <span class="date">DEC<br><small>20</small></span>
+            </div>
+            <div class="content-box">
+              <ul class="post-info">
+                <li><i class="fa-solid fa-user"></i>Admin</li>
+                <li><i class="fa-solid fa-comments"></i>0 comments</li>
+              </ul>
+              <h4 class="title"><a href="news-details.html">Swiming Benefits is <br>Good For Your Health</a></h4>
+              <a href="news-details.html" class="read-more">Read More<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="news-block col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
+          <div class="inner-box wow fadeInLeft" data-wow-delay="300ms">
+            <div class="image-box">
+              <figure class="image overlay-anim"><a href="news-details.html"><img src="images/resource/news-3.jpg" alt=""></a></figure>
+              <span class="date">DEC<br><small>20</small></span>
+            </div>
+            <div class="content-box">
+              <ul class="post-info">
+                <li><i class="fa-solid fa-user"></i>Category</li>
+                <li><i class="fa-solid fa-comments"></i>October 19, 2022</li>
+              </ul>
+              <h4 class="title"><a href="news-details.html">Avalible Now Health <br>Club For Your Fitness </a></h4>
+              <a href="news-details.html" class="read-more">Read More<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- End news section -->
+  <!-- Main Footer -->
+  <%- include('partials/footer') %>
+  <!--End Main Footer -->
+
+</div><!-- End Page Wrapper -->
+<script src="js/jquery.js"></script> 
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/slick-animation.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/flatpickr.js"></script>
+<script src="js/script.js"></script>
+<script defer src="js/booking.js"></script>
+<script>
+ 
+    document.querySelector('.checkout-form2').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the values from the form fields
+    const checkInDate = event.target.querySelector('.checkininput').value;
+    const checkOutDate = event.target.querySelector('.checkoutinput').value;
+    const roomCategory = event.target.querySelector('.checkout-form2 select').value;
+    console.log("🚀 ~ document.querySelector ~ roomCategory:", roomCategory)
+
+    if (!checkInDate || !checkOutDate || !roomCategory) {
+    alert("Please input all fields");
+    return;
+}
+    const loginBtn = document.getElementById('checkAvailability');
+
+			// Show the loader
+			loginBtn.innerHTML = '<span class="loader"></span>';
+			loginBtn.disabled = true;
+
+    // Create an object with the form data
+    const formData = {
+        start: checkInDate,
+        end: checkOutDate,
+        category_id: roomCategory
+    };
+    console.log("🚀 ~ document.querySelector ~ formData:", formData)
+
+    try {
+        // Post the form data to the /checkavailability endpoint
+        const response = await fetch(`/check-availability/?end=${formData.end}&start=${formData.start}&category_id=${formData.category_id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        function toster (message,color) {
+          Toastify({
+					text: message,
+					duration: 3000,
+					//destination: "https://github.com/apvarun/toastify-js",
+					newWindow: true,
+					close: true,
+					gravity: "top", // `top` or `bottom`
+					position: "center", // `left`, `center` or `right`
+					stopOnFocus: true, // Prevents dismissing of toast on hover
+					style: {
+						background: color,
+					},
+					onClick: function(){} // Callback after click
+					}).showToast();
+        }
+
+        // Handle the response from the server
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Availability:', data.data.availableRoomDetails);
+            loginBtn.innerHTML = 'check now';
+				loginBtn.disabled = false;
+          if (data?.data.availableRoomDetails.length > 0) {
+            console.log("🚀 ~ document.querySelector ~ data?:", data)
+            toster(data.message,"green")
+           const all = data.data.availableRoomDetails.map(data => `${data.room_number}`)
+           setTimeout(() => {
+             window.location.href = `/available-rooms?id=${data.data.category_id}&data=${all.toString()}&start=${formData.start}&end=${formData.end}`;
+            console.log("🚀 ~ document.querySelector ~ all:", all)
+
+           },1000)
+          }else{
+            toster(data.message,"red")
+          }
+
+            // You can also update the UI based on the server response
+        } else {
+          toster(response.statusText,"red")
+        }
+    } catch (error) {
+      toster(error.message,"red")
+        console.error('Error:', error);
+    }
+    } );
+  document.querySelector('.checkout-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the values from the form fields
+    const checkInDate = document.querySelector('.checkininput').value;
+    const checkOutDate = document.querySelector('.checkoutinput').value;
+    const roomCategory = document.querySelector('.checkout-field select').value;
+    console.log("🚀 ~ document.querySelector ~ roomCategory:", roomCategory)
+
+    const loginBtn = document.getElementById('checkAvailability');
+
+			// Show the loader
+			loginBtn.innerHTML = '<span class="loader"></span>';
+			loginBtn.disabled = true;
+
+    // Create an object with the form data
+    const formData = {
+        start: checkInDate,
+        end: checkOutDate,
+        category_id: roomCategory
+    };
+    console.log("🚀 ~ document.querySelector ~ formData:", formData)
+
+    try {
+        // Post the form data to the /checkavailability endpoint
+        const response = await fetch(`/check-availability/?end=${formData.end}&start=${formData.start}&category_id=${formData.category_id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        function toster (message,color) {
+          Toastify({
+					text: message,
+					duration: 3000,
+					//destination: "https://github.com/apvarun/toastify-js",
+					newWindow: true,
+					close: true,
+					gravity: "top", // `top` or `bottom`
+					position: "center", // `left`, `center` or `right`
+					stopOnFocus: true, // Prevents dismissing of toast on hover
+					style: {
+						background: color,
+					},
+					onClick: function(){} // Callback after click
+					}).showToast();
+        }
+
+        // Handle the response from the server
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Availability:', data.data.availableRoomDetails);
+            loginBtn.innerHTML = 'check now';
+				loginBtn.disabled = false;
+          if (data?.data.availableRoomDetails.length > 0) {
+            console.log("🚀 ~ document.querySelector ~ data?:", data)
+            toster(data.message,"green")
+           const all = data.data.availableRoomDetails.map(data => `${data.room_number}`)
+           setTimeout(() => {
+             window.location.href = `/available-rooms?id=${data.data.category_id}&data=${all.toString()}&start=${formData.start}&end=${formData.end}`;
+            console.log("🚀 ~ document.querySelector ~ all:", all)
+
+           },1000)
+          }else{
+            toster(data.message,"red")
+          }
+
+            // You can also update the UI based on the server response
+        } else {
+          toster(response.statusText,"red")
+        }
+    } catch (error) {
+      toster(error.message,"red")
+        console.error('Error:', error);
+    }
+});
+
+</script>
+
+
+</body>
+
+<!-- Mirrored from kodesolution.com/html/2023/Wishmewell Apartment-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Aug 2023 12:34:59 GMT -->
+</html>
+
+
