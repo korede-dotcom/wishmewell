@@ -110,13 +110,19 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     // });
 
 
-const result = await connectDB.query(`
-    SELECT *
-    FROM marques
-    WHERE "startTime" <= NOW()
-    AND "endTime" >= NOW()
-    LIMIT 1;
-  `, { type: Sequelize.QueryTypes.SELECT });
+    const currentTimeUTC = new Date().toISOString(); // This gives you the current UTC time
+    console.log("🚀 ~ clientHotelRoom ~ currentTimeUTC:", currentTimeUTC);
+    
+    const result = await connectDB.query(`
+      SELECT *
+      FROM marques
+      WHERE "startTime" <= '${currentTimeUTC}'
+      AND "endTime" >= '${currentTimeUTC}'
+      LIMIT 1;
+    `, { type: Sequelize.QueryTypes.SELECT });
+    
+    console.log("🚀 ~ clientHotelRoom ~ result:", result);
+    
 
 
 
