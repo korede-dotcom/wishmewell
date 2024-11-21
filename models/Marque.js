@@ -43,6 +43,6 @@ const Marque = sequelize.define('marque', {
 
 
 
-Marque.sync({force:true});
+Marque.sync({alter:true});
 
 module.exports = Marque;
