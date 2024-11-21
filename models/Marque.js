@@ -15,11 +15,29 @@ const Marque = sequelize.define('marque', {
   },
   startTime: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    get() {
+      const value = this.getDataValue('startTime');
+      // Format to 'YYYY-MM-DD HH:mm:ss' without timezone
+      return value ? value.toISOString().slice(0, 19).replace('T', ' ') : null;
+    },
+    set(value) {
+      // Save the value as a Date object in the database
+      this.setDataValue('startTime', new Date(value));
+    }
   },
   endTime: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    get() {
+      const value = this.getDataValue('endTime');
+      // Format to 'YYYY-MM-DD HH:mm:ss' without timezone
+      return value ? value.toISOString().slice(0, 19).replace('T', ' ') : null;
+    },
+    set(value) {
+      // Save the value as a Date object in the database
+      this.setDataValue('endTime', new Date(value));
+    }
   }
 });
 

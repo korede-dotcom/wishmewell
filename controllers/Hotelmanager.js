@@ -110,29 +110,22 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     // });
 
 
-    const moment = require('moment');
-
-    // Get current time and format it to match the DB format
-    const currentTime = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ'); // Example: '2024-11-21T20:03:27.130+0100'
+    // Fetch active marquees where current time is between startTime and endTime
+    const currentTime = moment().format('YYYY-MM-DD HH:mm:ss'); // Ensure correct format
     
-    console.log("🚀 ~ clientHotelRoom ~ formattedCurrentTime:", currentTime);
+    const activeMarquees = await Marque.findOne({
+      where: {
+        startTime: {
+          [Op.lte]: currentTime // current time <= startTime
+        },
+        endTime: {
+          [Op.gte]: currentTime // current time >= endTime
+        }
+      }
+    });
     
-    // Now, use this formatted current time in your SQL query
-    const result = await connectDB.query(`
-        SELECT *
-        FROM marques
-        WHERE "startTime" <= '${currentTime}'
-        AND "endTime" >= '${currentTime}'
-        LIMIT 1;
-    `, { type: Sequelize.QueryTypes.SELECT });
+    console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
     
-    console.log("🚀 ~ clientHotelRoom ~ result:", result);
-    
-    
-
-
-
-console.log("🚀 ~ clientHotelRoom ~ result:", result[0]);
 
 
 // console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
@@ -140,7 +133,7 @@ console.log("🚀 ~ clientHotelRoom ~ result:", result[0]);
     
    return res.render('index', {
         pkgs: pkgs,
-        activeMarquees:result[0]
+        activeMarquees:activeMarquees
       });
 })
 
