@@ -9,6 +9,7 @@ const moment = require("moment");
 const sequelize = require("sequelize");
 const Marque = require("../models/Marque");
 const axios = require("axios");
+const connectDB = require("../config/connectDB");
 
 const getPkgs = asynchandler( async (req,res) => {
     
@@ -146,7 +147,17 @@ const activeMarquees = await Marque.findOne({
   },
 });
 
-console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
+const result = await sequelize.query(`
+    SELECT *
+    FROM Marque
+    WHERE start_time <= NOW()
+    AND end_time >= NOW()
+    LIMIT 1;
+  `, { type: Sequelize.QueryTypes.SELECT });
+
+
+
+console.log("🚀 ~ clientHotelRoom ~ result:", result);
 
 
 console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
