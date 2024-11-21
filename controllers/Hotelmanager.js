@@ -109,27 +109,30 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     // });
 
 
-
-    // console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
-
-    // Get the current time
-// Get the current time as a JavaScript Date object
-const currentTime = new Date();
-
-// Convert it to ISO 8601 with timezone (YYYY-MM-DDTHH:mm:ss.sss+HH:mm)
-const formattedCurrentTime = currentTime.toISOString(); // Default to UTC, then adjust the timezone manually
-
-// Get the timezone offset in minutes, and convert it to the required format (+HHMM)
-const timezoneOffset = currentTime.getTimezoneOffset(); // in minutes
-const hoursOffset = String(Math.floor(Math.abs(timezoneOffset) / 60)).padStart(2, '0');
-const minutesOffset = String(Math.abs(timezoneOffset) % 60).padStart(2, '0');
-const sign = timezoneOffset <= 0 ? '+' : '-';
-const customTimezone = `${sign}${hoursOffset}${minutesOffset}`;
-
-// Adjust the ISO string to append the timezone correctly
-const finalFormattedTime = `${formattedCurrentTime.slice(0, -1)}${customTimezone}`;
-
-console.log("🚀 ~ clientHotelRoom ~ formattedCurrentTime:", finalFormattedTime);
+ 
+        const currentTime = new Date(date);
+      
+        // Format the date components
+        const year = currentTime.getFullYear();
+        const month = String(currentTime.getMonth() + 1).padStart(2, '0');
+        const day = String(currentTime.getDate()).padStart(2, '0');
+        const hours = String(currentTime.getHours()).padStart(2, '0');
+        const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+        const seconds = String(currentTime.getSeconds()).padStart(2, '0');
+        const milliseconds = String(currentTime.getMilliseconds()).padStart(3, '0');
+      
+        // Get the timezone offset in "+HHMM" format
+        const timezoneOffset = -currentTime.getTimezoneOffset(); // in minutes
+        const sign = timezoneOffset >= 0 ? '+' : '-';
+        const absOffset = Math.abs(timezoneOffset);
+        const hoursOffset = String(Math.floor(absOffset / 60)).padStart(2, '0');
+        const minutesOffset = String(absOffset % 60).padStart(2, '0');
+        const timezone = `${sign}${hoursOffset}${minutesOffset}`;
+      
+        // Combine into the final format
+        const finalFormattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds} ${timezone}`;
+      
+      
 
 // Sequelize query to match the active marquee
 const activeMarquees = await Marque.findOne({
