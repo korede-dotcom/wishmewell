@@ -8,7 +8,7 @@ module.exports = new Sequelize(dbName,dbUser,dbPassword, {
     dialect: dbDialect,
     logging: false,
     schema: dbSchema,
-    timezone: '+01:00',
+   
     
     pool: {
         max: 5,
