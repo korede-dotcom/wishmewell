@@ -104,12 +104,14 @@ const clientHotelRoom = asynchandler(async (req,res) => {
       }
     });
 
+    console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
     
    return res.render('index', {
         pkgs: pkgs,
         activeMarquees:activeMarquees
       });
 })
+
 const contact = asynchandler(async (req,res) => {
 
     const currentTime = new Date();
