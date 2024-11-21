@@ -113,43 +113,39 @@ const clientHotelRoom = asynchandler(async (req,res) => {
     // console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees)
 
     // Get the current time
+// Get the current time as a JavaScript Date object
 const currentTime = new Date();
 
-// Format the date components
-const year = currentTime.getFullYear();
-const month = String(currentTime.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-const day = String(currentTime.getDate()).padStart(2, '0');
-const hours = String(currentTime.getHours()).padStart(2, '0');
-const minutes = String(currentTime.getMinutes()).padStart(2, '0');
-const seconds = String(currentTime.getSeconds()).padStart(2, '0');
-const milliseconds = String(currentTime.getMilliseconds()).padStart(3, '0');
+// Convert it to the correct format: ISO 8601 with timezone (YYYY-MM-DDTHH:mm:ss.sss+HH:mm)
+const formattedCurrentTime = currentTime.toISOString(); // This gives the time in ISO format with UTC
 
-// Get the timezone offset in "+HHMM" format
-const timezoneOffset = -currentTime.getTimezoneOffset(); // in minutes
-const sign = timezoneOffset >= 0 ? '+' : '-';
-const absOffset = Math.abs(timezoneOffset);
-const hoursOffset = String(Math.floor(absOffset / 60)).padStart(2, '0');
-const minutesOffset = String(absOffset % 60).padStart(2, '0');
-const timezone = `${sign}${hoursOffset}${minutesOffset}`;
+// To adjust the time zone, you can manually apply the timezone offset (in the desired format)
+const timezoneOffset = currentTime.getTimezoneOffset(); // in minutes
+const hoursOffset = String(Math.floor(Math.abs(timezoneOffset) / 60)).padStart(2, '0');
+const minutesOffset = String(Math.abs(timezoneOffset) % 60).padStart(2, '0');
+const sign = timezoneOffset <= 0 ? '+' : '-';
+const customTimezone = `${sign}${hoursOffset}${minutesOffset}`;
 
-// Combine into the final format
-const formattedCurrentTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds} ${timezone}`;
+// Adjust the ISO string by appending the custom timezone
+const finalFormattedTime = `${formattedCurrentTime.slice(0, -1)}${customTimezone}`; // Remove 'Z' and add custom timezone
 
-console.log("🚀 ~ clientHotelRoom ~ formattedCurrentTime:", formattedCurrentTime);
+console.log("🚀 ~ clientHotelRoom ~ formattedCurrentTime:", finalFormattedTime);
 
 // Use the formatted time in the Sequelize query
 const activeMarquees = await Marque.findOne({
   where: {
     startTime: {
-      [Op.lte]: formattedCurrentTime, // Adjusted current time
+      [Op.lte]: finalFormattedTime, // Adjusted current time
     },
     endTime: {
-      [Op.gte]: formattedCurrentTime,
+      [Op.gte]: finalFormattedTime,
     },
   },
 });
 
 console.log("🚀 ~ clientHotelRoom ~ activeMarquees:", activeMarquees);
+
+
 
     
    return res.render('index', {
