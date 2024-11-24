@@ -620,7 +620,11 @@ Scroll To Top style
   left: 0;
   color: var(--theme-color1);
 }
-
+@media screen and (max-width: 40em)  {
+  .page-link{
+    font-size: 16px !important;
+  }
+}
 /*=======================
     List Styles
 =======================*/
