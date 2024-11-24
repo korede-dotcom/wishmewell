@@ -22,6 +22,7 @@ function checkAuthCookie(req, res, next) {
         // Verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded; // Attach the decoded user data to the request object
+        console.log("🚀 ~ checkAuthCookie ~ req.user.status:", req.user.status)
         if (!req.user.status) {
             return res.redirect('/portal');
         }
