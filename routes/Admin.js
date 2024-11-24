@@ -801,10 +801,10 @@ routes.post("/add-staff",checkAuthCookie,expressAsyncHandler(async (req, res) =>
                     <tr>
                       <td style="padding: 20px; color: #333;">
                         <p style="font-size: 16px; margin-bottom: 20px;">Hi ${saveUser.name},</p>
-                        <p style="font-size: 16px; margin-bottom: 20px;">Welcome to Wishmewell Apartment and Suites! We're excited to have you as our new staff member with role ${saveUser.roleName} . Below are your login credentials:</p>
+                        <p style="font-size: 16px; margin-bottom: 20px;">Welcome to Wishmewell Apartment and Suites! We're excited to have you as our new staff member with role ${saveUser.roleName === "hotel receptionist" ? "Receptionist" : saveUser.roleName} . Below are your login credentials:</p>
                         <p style="font-size: 16px; margin-bottom: 20px;">Email: ${saveUser.email}</p>
                         <p style="font-size: 16px; margin-bottom: 20px;">Password: ${randPass}</p>
-                        <p style="font-size: 16px; margin-top: 20px;">You can log in to your account here: <a href="https://Wishmewell Apartment.com/portal" style="color: #c19b76; text-decoration: underline;">Wishmewell Apartment and Suites Portal</a></p>
+                        <p style="font-size: 16px; margin-top: 20px;">You can log in to your account here: <a href="https://wishmewellapartment.com/portal" style="color: #c19b76; text-decoration: underline;">Wishmewell Apartment and Suites Portal</a></p>
                         <p style="font-size: 16px; margin-top: 20px;">If you have any questions, feel free to reach out to us.</p>
                       </td>
                     </tr>
