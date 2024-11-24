@@ -22,6 +22,9 @@ function checkAuthCookie(req, res, next) {
         // Verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded; // Attach the decoded user data to the request object
+        if (!req.user.status) {
+            return res.redirect('/portal');
+        }
         next(); // Proceed to the next middleware/route handler
     } catch (err) {
         // Token verification failed, redirect to login

@@ -71,6 +71,10 @@ const Login =  async (req,res) => {
         // delete userJson.password;
         //  createSendToken(userJson,200,res)
         //  const token = createSendToken(userJson, 200, res);
+       
+
+
+
         if (!user.verified) {
             return res.status(401).json({
                 data:{
@@ -87,7 +91,16 @@ const Login =  async (req,res) => {
          req.user = user;
          createSendTokens(userJson, 200, res);
 
-    } else {
+    } else if (!user.status) {
+        return res.status(200).json({
+            status:false,
+            message:"sorry your account is deactivated please contact admin",
+            data:{
+                status:false,
+            message:"sorry your account is deactivated please contact admin",
+            }
+        });
+    }  else {
         return res.status(200).json({
             status:false,
             message:"incorrect email or password",
