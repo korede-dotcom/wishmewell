@@ -185,7 +185,7 @@
         </figure>
         <div class="content-box">
           
-          <!-- <span class="sub-titled"  data-delay-in="0.1">unique place and luxury hotel</span> -->
+          <!-- <span class="sub-titled"  data-delay-in="0.1">unique place and luxury apartment</span> -->
          
           <style>
           
@@ -239,6 +239,103 @@
     h1, h3 {
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
+
+    /* Styling for room block */
+    .room-block {
+  border: 3px solid #978667;
+  padding: 30px; /* Adds more space inside the card */
+  margin-top: 30px; /* Adds spacing at the top */
+  margin-bottom: 30px; /* Adds spacing at the bottom */
+  /* background: linear-gradient(45deg, #f8f9fa, #fefefd); Smooth gradient from light beige to tan */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+   /* Subtle shadow for a lifted effect */
+}
+
+
+/* Image styling */
+.image-box img {
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.room-block:hover .image-box img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Content styling */
+.content-box {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.content-box .title a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* color: #333; */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.content-box .title a:hover {
+  color: #000;
+}
+
+.price {
+  display: block;
+  margin-top: 10px;
+  font-size: 2.1rem;
+  /* color: #333; */
+  font-weight: bold;
+}
+
+/* Caption Box and Button Styling */
+.box-caption {
+  margin-top: 20px;
+}
+
+.book-btn {
+  background-color: #000;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: #000;
+}
+
+/* Icon links */
+.bx-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.bx-links li a {
+  color: #333;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.bx-links li a:hover {
+  color: #333;
+}
+
+@media (max-width: 576px) {
+   .row{
+    padding-left: 20px;
+   }
+   .sec-title h2{
+    line-height: 1;
+   }
+    
+  }
+
           </style>
 
 <div class="landing-page">
@@ -317,21 +414,21 @@
             <div class="sec-title">
               <span class="sub-title">Wishmewell Apartment</span>
               <h2>Most Safe & Rated <br>Apartment in Lagos.</h2>
-              <div class="text">Discover the top-rated and safest hotel in Lagos, where comfort meets security. Experience exceptional hospitality, world-class amenities, and a commitment to guest safety. Enjoy peace of mind during your stay, knowing you're in a hotel with a reputation for excellence and the highest standards of service in Lagos.<br></div>
+              <div class="text">Discover the top-rated and safest apartment in Lagos, where comfort meets security. Experience exceptional hospitality, world-class amenities, and a commitment to guest safety. Enjoy peace of mind during your stay, knowing you're in a apartment with a reputation for excellence and the highest standards of service in Lagos.<br></div>
             </div>
             <div class="outer-box">
               <div class="info-block">
                 <div class="inner">
                   <div class="icon-box"><i class="flaticon-light"></i></div>
-                  <h4 class="title">The Best <br>Lighting</h4>
+                  <h4 class="title">The Best Lighting</h4>
                 </div>
               </div>
-              <!-- <div class="info-block">
+              <div class="info-block">
                 <div class="inner">
-                  <div class="icon-box"><i class="flaticon-volume-up"></i></div>
-                  <h4 class="title">Room Sound<br>system </h4>
+                  <div class="icon-box"><i style="font-size: 40px" class="fal fa-user-group"></i></div>
+                  <h4 class="title">Simple User Experience </h4>
                 </div>
-              </div> -->
+              </div>
             </div>
             <div class="btn-box">
               <a href="/page-contact" class="theme-btn btn-style-one"><span class="btn-title">Discover More</span></a>
@@ -346,8 +443,8 @@
 
         <!-- Image Column -->
         <div class="image-column col-xl-6 col-lg-6">
-          <div class="inner-column wow fadeInLeft">
-            <figure class="image-1 overlay-anim wow fadeInUp"><img src="images/banner/banner-3.png" alt=""></figure>
+          <div class="inner-column wow fadeInLeft" data-wow-delay="400ms">
+            <figure class="image-1 overlay-anim wow fadeInUp"><img style="height: 500px;object-fit: cover;" src="images/banner/banner-5.png" alt=""></figure>
             <figure class="image-2 overlay-anim wow fadeInLeft"><img src="images/banner/banner-5.png" alt=""></figure>
             <div class="btn-box">
               <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" class="play-now-two" data-fancybox="gallery" data-caption="">
@@ -355,11 +452,11 @@
                 <span class="ripple"></span>
               </a>
             </div>
-            <!-- <div class="exp-box bounce-y">
-              <figure class=" overlay-anim wow fadeInLeft"><img src="images/resource/exp-icon.png" alt=""></figure>
-              <h4 class="title">Luxury Room</h4>
-              <div class="text">Donec in quis the asd <br>pellentesque velit. Donec id <br>velit arcu posuere blane.</div>
-            </div> -->
+            <!-- <div class="exp-box bounce-y"> -->
+              <!-- <figure class=" overlay-anim wow fadeInLeft"><img height="10px" width="50px" src="images/logo-2.png" alt=""></figure> -->
+              <!-- <h4 class="title">Luxury Room</h4> -->
+              <!-- <div class="text">Wish me well, and I'll wish you the same—a little positivity goes a long way!</div> -->
+            <!-- </div> -->
           </div>
         </div>
       </div>
@@ -368,10 +465,10 @@
   <!--Emd About Section -->
 
   <!-- rooms-section -->
-  <section class="rooms-section pb-100">
+  <section class="rooms-section pb-100" style="background: #010101d6 !important;">
     <div class="auto-container">
       <div class="sec-title text-center wow fadeInUp">
-        <span class="sub-title">Wishmewell Apartment Rooms</span>
+        <span class="sub-title" style="color: #fff;">Wishmewell Apartment Rooms</span>
         <h2>Luxury Rooms & Suites</h2>
       </div>
     
@@ -388,15 +485,16 @@
   @media (max-width: 576px) {
     .room-block {
       margin-bottom: 20px;
-
+      
     }
     .image-2 img{
       margin-inline: 10px;
     }
+    
   }
           </style>
           
-          <div class="row">
+          <div class="row"  >
             <% pkgs.forEach(pkg => { %>
               <!-- Each package as a column -->
               <div class="room-block col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
@@ -414,10 +512,10 @@
                   <div class="box-caption">
                     <a href="/rooms?id=<%= pkg._id %>" title="" class="book-btn">View</a>
                     <ul class="bx-links">
-                      <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
-                      <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
-                      <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
-                      <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                      <li><a  title=""><i class="fa fa-wifi"></i></a></li>
+                      <li><a  title=""><i class="fa fa-bed"></i></a></li>
+                      <li><a  title=""><i class="fa fa-bath"></i></a></li>
+                      <li><a  title=""><i class="fa fa-shower"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -435,16 +533,16 @@
               <figure class="image-2 overlay-anim"><img src="images/resource/room-2.jpg" alt=""></figure>
             </div>
             <div class="content-box">
-              <h6 class="title"><a href="room-details.html">Family Room</a></h6>
+              <h6 class="title"><a >Family Room</a></h6>
               <span class="price">200$ / NIGHT</span>
             </div>
             <div class="box-caption">
-              <a href="room-details.html" title="" class="book-btn">book now</a>
+              <a  title="" class="book-btn">book now</a>
               <ul class="bx-links">
-                <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                <li><a  title=""><i class="fa fa-wifi"></i></a></li>
+                <li><a  title=""><i class="fa fa-bed"></i></a></li>
+                <li><a  title=""><i class="fa fa-bath"></i></a></li>
+                <li><a  title=""><i class="fa fa-shower"></i></a></li>
               </ul>
             </div>
           </div>
@@ -456,16 +554,16 @@
               <figure class="image-2 overlay-anim"><img src="images/resource/room-3.jpg" alt=""></figure>
             </div>
             <div class="content-box">
-              <h6 class="title"><a href="room-details.html">Double Room</a></h6>
+              <h6 class="title"><a >Double Room</a></h6>
               <span class="price">250$ / NIGHT</span>
             </div>
             <div class="box-caption">
-              <a href="room-details.html" title="" class="book-btn">book now</a>
+              <a  title="" class="book-btn">book now</a>
               <ul class="bx-links">
-                <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                <li><a  title=""><i class="fa fa-wifi"></i></a></li>
+                <li><a  title=""><i class="fa fa-bed"></i></a></li>
+                <li><a  title=""><i class="fa fa-bath"></i></a></li>
+                <li><a  title=""><i class="fa fa-shower"></i></a></li>
               </ul>
             </div>
           </div>
@@ -477,16 +575,16 @@
               <figure class="image-2 overlay-anim"><img src="images/resource/room-4.jpg" alt=""></figure>
             </div>
             <div class="content-box">
-              <h6 class="title"><a href="room-details.html">Double Room</a></h6>
+              <h6 class="title"><a >Double Room</a></h6>
               <span class="price">250$ / NIGHT</span>
             </div>
             <div class="box-caption">
-              <a href="room-details.html" title="" class="book-btn">book now</a>
+              <a  title="" class="book-btn">book now</a>
               <ul class="bx-links">
-                <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
-                <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                <li><a  title=""><i class="fa fa-wifi"></i></a></li>
+                <li><a  title=""><i class="fa fa-bed"></i></a></li>
+                <li><a  title=""><i class="fa fa-bath"></i></a></li>
+                <li><a  title=""><i class="fa fa-shower"></i></a></li>
               </ul>
             </div>
           </div>
@@ -498,16 +596,16 @@
                 <figure class="image-2 overlay-anim"><img src="images/resource/room-5.jpg" alt=""></figure>
               </div>
               <div class="content-box">
-                <h6 class="title"><a href="room-details.html">Deluxe Room</a></h6>
+                <h6 class="title"><a >Deluxe Room</a></h6>
                 <span class="price">300$ / NIGHT</span>
               </div>
               <div class="box-caption">
-                <a href="room-details.html" title="" class="book-btn">book now</a>
+                <a  title="" class="book-btn">book now</a>
                 <ul class="bx-links">
-                  <li><a href="room-details.html" title=""><i class="fa fa-wifi"></i></a></li>
-                  <li><a href="room-details.html" title=""><i class="fa fa-bed"></i></a></li>
-                  <li><a href="room-details.html" title=""><i class="fa fa-bath"></i></a></li>
-                  <li><a href="room-details.html" title=""><i class="fa fa-shower"></i></a></li>
+                  <li><a  title=""><i class="fa fa-wifi"></i></a></li>
+                  <li><a  title=""><i class="fa fa-bed"></i></a></li>
+                  <li><a  title=""><i class="fa fa-bath"></i></a></li>
+                  <li><a  title=""><i class="fa fa-shower"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -518,7 +616,8 @@
   <!-- End rooms-section -->
 
   <!-- service-section -->
-  <section class="service-section">
+  <!-- #353330 -->
+  <section class="service-section" >
     <div class="auto-container">
       <div class="sec-title text-center wow slideInUp">
         <span class="sub-title">Wishmewell Apartment SERVICES</span>
@@ -530,7 +629,7 @@
           <div class="inner-box wow fadeIn" data-wow-delay="100ms">
             <div class="icon-box wow fadeInUp"><i class="flaticon-bed-2"></i></div>
             <div class="content-box">
-              <h4 class="title"><a href="page-service-details.html">Room Service</a></h4>
+              <h4 class="title"><a >Room Service</a></h4>
               <div class="text">we provide 24/7 room service to ensure your stay is as comfortable and enjoyable as possible. Whether you’re craving a delicious meal, a refreshing drink, or anything else you need, our team is here to assist.</div>
             </div>
           </div>
@@ -538,10 +637,10 @@
         <!-- service-block -->
         <div class="service-block col-lg-4 col-md-6 col-sm-12">
           <div class="inner-box wow fadeIn" data-wow-delay="200ms">
-            <div class="icon-box wow fadeInUp"><i class="flaticon-travel"></i></div>
+            <div class="icon-box wow fadeInUp"><i class="fa fa-credit-card"></i> </div>
             <div class="content-box">
-              <h4 class="title"><a href="page-service-details.html">Pick Up & Drop</a></h4>
-              <div class="text">Enjoy a hassle-free arrival and departure with our reliable pick-up and drop service. Whether you're coming from the airport, train station, or another location, we’re here to ensure your journey is smooth and comfortable.</div>
+              <h4 class="title"><a >Secure Online Payment</a></h4>
+              <div class="text">Book your stay with confidence! Our secure online payment system ensures that your transaction is protected, encrypted, and processed smoothly. Whether you're securing our apartment for a weekend getaway or an extended stay, rest assured that your payment details are safe with us.</div>
             </div>
           </div>
         </div>
@@ -550,8 +649,8 @@
           <div class="inner-box wow fadeIn" data-wow-delay="300ms">
             <div class="icon-box wow fadeInUp"><i class="flaticon-wifi"></i></div>
             <div class="content-box">
-              <h4 class="title"><a href="page-service-details.html">Fibre Internet</a></h4>
-              <div class="text">Stay connected with our high-speed fibre internet, available throughout the hotel. Whether you’re working remotely, streaming your favorite shows, or staying in touch with loved ones, our reliable internet ensures you’re always connected.</div>
+              <h4 class="title"><a >Fibre Internet</a></h4>
+              <div class="text">Stay connected with our high-speed fibre internet, available throughout the apartment. Whether you’re working remotely, streaming your favorite shows, or staying in touch with loved ones, our reliable internet ensures you’re always connected.</div>
             </div>
           </div>
         </div>
@@ -560,7 +659,7 @@
           <div class="inner-box wow fadeIn" data-wow-delay="400ms">
             <div class="icon-box wow fadeInUp"><i class="flaticon-breakfast"></i></div>
             <div class="content-box">
-              <h4 class="title"><a href="page-service-details.html">Breakfast</a></h4>
+              <h4 class="title"><a >Breakfast</a></h4>
               <div class="text">Orci varius natoque penatibus magnis ders disney parturient ridiculus</div>
             </div>
           </div>
@@ -572,7 +671,7 @@
               <img src="./images/resource/snooker.png" alt="" srcset="">
             </div>
             <div class="content-box">
-              <h4 class="title"><a href="page-service-details.html">Snooker</a></h4>
+              <h4 class="title"><a >Snooker</a></h4>
               <div class="text">
                 Relax and enjoy a game of snooker in our dedicated snooker lounge. Whether you're a seasoned player or just looking for a fun way to unwind, our snooker facilities provide the perfect setting for friendly competition.
               </div>
@@ -584,7 +683,7 @@
           <div class="inner-box wow fadeIn" data-wow-delay="600ms">
             <div class="icon-box wow fadeInUp"><i class="flaticon-car"></i></div>
             <div class="content-box">
-              <h4 class="title"><a href="page-service-details.html">Parking Space</a></h4>
+              <h4 class="title"><a >Parking Space</a></h4>
               <div class="text">we provide safe and convenient parking options for all our guests. Whether you're traveling by car, SUV, or motorbike, our secure parking facilities ensure peace of mind throughout your stay.</div>
             </div>
           </div>
@@ -642,7 +741,7 @@
                 <h2>Fitness Center</h2>
                 <div class="text">Restaurant inilla duiman at elit finibus viverra nec a  lacus themo the <br>nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru <br>the ivite dianne onen nivami acsestion augue artine.</div>
               </div>
-              <a href="room-details.html" class="theme-btn btn-style-one read-more">Discover More</a>
+              <a  class="theme-btn btn-style-one read-more">Discover More</a>
               <figure class="image-2"><img src="images/resource/icon.png" alt=""></figure>
             </div>
           </div>
@@ -659,7 +758,7 @@
                 lacus themo the <br>nesudea seneoice misuscipit non sagie the fermen
                 ziverra tristiue duru <br>the ivite dianne onen nivami acsestion augue artine.</div>
               </div>
-              <a href="room-details.html" class="theme-btn btn-style-one read-more">Discover More</a>
+              <a  class="theme-btn btn-style-one read-more">Discover More</a>
               <figure class="image-2"><img src="images/resource/icon-2.png" alt=""></figure>
             </div>
           </div>
@@ -690,14 +789,14 @@
                 lacus themo the <br>nesudea seneoice misuscipit non sagie the fermen
                 ziverra tristiue duru <br>the ivite dianne onen nivami acsestion augue artine.</div>
               </div>
-              <a href="room-details.html" class="theme-btn btn-style-one read-more">Discover More</a>
+              <a  class="theme-btn btn-style-one read-more">Discover More</a>
               <figure class="image-2"><img src="images/resource/icon-3.png" alt=""></figure>
             </div> 
           </div>
         </div> 
       </div>
     </div>
-  </section> -->
+  </section>  -->
   <!-- End feature section -->
 
   <!-- testimonial-section -->
@@ -816,10 +915,10 @@
                 <span class="designation">Event Platnner</span>
                 <h4 class="name"><a href="page-team-details.html">Michael Dean</a></h4>
                 <div class="social-links">
-                  <a href="#"><i class="fab fa-facebook"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a ><i class="fab fa-facebook"></i></a>
+                  <a ><i class="fab fa-twitter"></i></a>
+                  <a ><i class="fab fa-linkedin"></i></a>
+                  <a ><i class="fab fa-youtube"></i></a>
                 </div>
               </div>
             </div>
@@ -833,10 +932,10 @@
                 <span class="designation">Kitchen Manager</span>
                 <h4 class="name"><a href="page-team-details.html">Frank Burton</a></h4>
                 <div class="social-links">
-                  <a href="#"><i class="fab fa-facebook"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a ><i class="fab fa-facebook"></i></a>
+                  <a ><i class="fab fa-twitter"></i></a>
+                  <a ><i class="fab fa-linkedin"></i></a>
+                  <a ><i class="fab fa-youtube"></i></a>
                 </div>
               </div>
             </div>
@@ -850,10 +949,10 @@
                 <span class="designation">Apartment Manager</span>
                 <h4 class="name"><a href="page-team-details.html">Mya Mullins</a></h4>
                 <div class="social-links">
-                  <a href="#"><i class="fab fa-facebook"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a ><i class="fab fa-facebook"></i></a>
+                  <a ><i class="fab fa-twitter"></i></a>
+                  <a ><i class="fab fa-linkedin"></i></a>
+                  <a ><i class="fab fa-youtube"></i></a>
                 </div>
               </div>
             </div>
@@ -867,10 +966,10 @@
                 <span class="designation">Room Service</span>
                 <h4 class="name"><a href="page-team-details.html">Ralph Nguyen</a></h4>
                 <div class="social-links">
-                  <a href="#"><i class="fab fa-facebook"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-linkedin"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a ><i class="fab fa-facebook"></i></a>
+                  <a ><i class="fab fa-twitter"></i></a>
+                  <a ><i class="fab fa-linkedin"></i></a>
+                  <a ><i class="fab fa-youtube"></i></a>
                 </div>
               </div>
             </div>
