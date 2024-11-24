@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
-
-function checkAuthCookie(req, res, next) {
+const User = require("../models/User")
+async function checkAuthCookie(req, res, next) {
     // Ensure cookies are being parsed
     if (!req.cookies) {
         return res.redirect('/portal');
@@ -22,8 +22,9 @@ function checkAuthCookie(req, res, next) {
         // Verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded; // Attach the decoded user data to the request object
-        console.log("🚀 ~ checkAuthCookie ~ req.user.status:", req.user.status)
-        if (!req.user.status) {
+        const findOne = await User.findOne({_id:req.user._id})
+        console.log("🚀 ~ checkAuthCookie ~ findOne:", findOne)
+        if (!findOne.status) {
             return res.redirect('/portal');
         }
         next(); // Proceed to the next middleware/route handler
