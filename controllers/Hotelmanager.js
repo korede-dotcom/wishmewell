@@ -280,6 +280,15 @@ const clientRoom = asynchandler(async (req, res) => {
 
    
 });
+const clientTerms = asynchandler(async (req, res) => {
+    
+
+    return res.render('terms');
+
+    // Room.belongsTo(RoomNumber,{foreignKey:'_id',targetKey:"category_id" });
+
+   
+});
 
 
 
@@ -666,7 +675,8 @@ module.exports = {
     GetAvailabilityToday,
     clientRoom,
     contact,
-    createhotelpkgCat
+    createhotelpkgCat,
+    clientTerms
 };
 
 

@@ -16,6 +16,7 @@ routes.get("/event/pkg",managerControl.active)
         .post("/check-availability",Hotel.GetAvailability)
         .get("/available-rooms",Hotel.clientRoomAvailable)
         .get("/rooms",Hotel.clientRoom)
+        .get("/terms-and-conditions",Hotel.clientTerms)
         .get("/result",Hotel.paymentResult)
         .get("/page-contact",Hotel.contact)
         .post("/send-email",async(req,res) => {
