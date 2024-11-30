@@ -57,7 +57,7 @@
       transform: scale(1);
       transition: transform 1s ease-in-out;
       animation: zoomEffect 10s infinite alternate;
-      box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5); 
+      box-shadow: 10px 10px 30px rgba(2, 2, 2, 0.5); 
       filter: brightness(0.7);
     }
 
@@ -165,6 +165,156 @@
 
 <body>
 <div class="page-wrapper">
+  <style>
+          
+    .landing-page {
+      font-family: 'Poppins', sans-serif;
+text-align: center;
+color: #fff;
+}
+
+h1 {
+font-size: 3.5rem; /* Main heading size */
+text-transform: uppercase;
+font-weight: 600;
+animation: pop-up 1.5s ease-out forwards;
+opacity: 0; /* Initially hidden */
+}
+
+h3 {
+font-size: 1.5rem;
+font-style: italic;
+margin-top: -15px;
+animation: fade-in 2.5s ease-out forwards;
+opacity: 0; /* Initially hidden */
+}
+
+/* Keyframes for the pop-up effect */
+@keyframes pop-up {
+0% {
+transform: translateY(50px);
+opacity: 0;
+}
+100% {
+transform: translateY(0);
+opacity: 1;
+}
+}
+
+/* Keyframes for fade-in */
+@keyframes fade-in {
+0% {
+opacity: 0;
+transform: translateY(20px);
+}
+100% {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+/* Optional subtle shadow for text */
+h1, h3 {
+text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for room block */
+.room-block {
+border: 3px solid #978667;
+padding: 30px; /* Adds more space inside the card */
+margin-top: 30px; /* Adds spacing at the top */
+margin-bottom: 30px; /* Adds spacing at the bottom */
+/* background: linear-gradient(45deg, #f8f9fa, #fefefd); Smooth gradient from light beige to tan */
+border-radius: 10px;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+/* Subtle shadow for a lifted effect */
+}
+
+
+/* Image styling */
+.image-box img {
+border-radius: 8px;
+transition: transform 0.3s ease;
+}
+
+.room-block:hover .image-box img {
+transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Content styling */
+.content-box {
+padding-top: 15px;
+padding-bottom: 15px;
+}
+
+.content-box .title a {
+font-size: 1.5rem;
+font-weight: bold;
+/* color: #333; */
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.content-box .title a:hover {
+color: #000;
+}
+
+.price {
+display: block;
+margin-top: 10px;
+font-size: 2.1rem;
+/* color: #333; */
+font-weight: bold;
+}
+
+/* Caption Box and Button Styling */
+.box-caption {
+margin-top: 20px;
+}
+
+.book-btn {
+background-color: #000;
+color: white;
+padding: 10px 20px;
+border-radius: 5px;
+text-decoration: none;
+font-weight: bold;
+transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+background-color: #000;
+}
+
+/* Icon links */
+.bx-links {
+list-style: none;
+padding: 0;
+display: flex;
+gap: 15px;
+}
+
+.bx-links li a {
+color: #333;
+font-size: 1.2rem;
+transition: color 0.3s ease;
+}
+
+.bx-links li a:hover {
+color: #333;
+}
+
+@media (max-width: 576px) {
+.row{
+padding-left: 20px;
+}
+.sec-title h2{
+line-height: 1;
+}
+
+}
+
+  </style>
 
   <!-- Main Header-->
 
@@ -177,188 +327,80 @@
     <div class="banner-slider">
      
       <div class="banner-slide" data-delay-in="0.9">
-        <!-- <figure class="image"><img src="https://i.imgur.com/5Nw1kiL.jpeg" alt=""></figure> -->
-        <figure class="image">
+        <figure class="image"><img src="https://res.cloudinary.com/bada/image/upload/v1732987151/wishmewell/IMG_5735_Large_hlnzyr.png" alt=""></figure>
+        <!-- <figure class="image">
           <div class="video-container">
             <video src="https://res.cloudinary.com/bada/video/upload/v1732141362/WhatsApp_Video_2024-11-09_at_14.43.49_pgfm3k.mp4" autoplay muted loop></video>
           </div>
-        </figure>
+        </figure> -->
         <div class="content-box">
+       
+
+        <div class="landing-page">
+          <h1>Wishmewell Apartment</h1>
+          <h3>Your luxury, our care.</h3>
+        </div>
           
-          <!-- <span class="sub-titled"  data-delay-in="0.1">unique place and luxury apartment</span> -->
-         
-          <style>
-          
-            .landing-page {
-              font-family: 'Poppins', sans-serif;
-      text-align: center;
-      color: #fff;
-    }
-
-    h1 {
-      font-size: 3.5rem; /* Main heading size */
-      text-transform: uppercase;
-      font-weight: 600;
-      animation: pop-up 1.5s ease-out forwards;
-      opacity: 0; /* Initially hidden */
-    }
-
-    h3 {
-      font-size: 1.5rem;
-      font-style: italic;
-      margin-top: -15px;
-      animation: fade-in 2.5s ease-out forwards;
-      opacity: 0; /* Initially hidden */
-    }
-
-    /* Keyframes for the pop-up effect */
-    @keyframes pop-up {
-      0% {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    /* Keyframes for fade-in */
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Optional subtle shadow for text */
-    h1, h3 {
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Styling for room block */
-    .room-block {
-  border: 3px solid #978667;
-  padding: 30px; /* Adds more space inside the card */
-  margin-top: 30px; /* Adds spacing at the top */
-  margin-bottom: 30px; /* Adds spacing at the bottom */
-  /* background: linear-gradient(45deg, #f8f9fa, #fefefd); Smooth gradient from light beige to tan */
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-   /* Subtle shadow for a lifted effect */
-}
-
-
-/* Image styling */
-.image-box img {
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.room-block:hover .image-box img {
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* Content styling */
-.content-box {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.content-box .title a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  /* color: #333; */
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.content-box .title a:hover {
-  color: #000;
-}
-
-.price {
-  display: block;
-  margin-top: 10px;
-  font-size: 2.1rem;
-  /* color: #333; */
-  font-weight: bold;
-}
-
-/* Caption Box and Button Styling */
-.box-caption {
-  margin-top: 20px;
-}
-
-.book-btn {
-  background-color: #000;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.book-btn:hover {
-  background-color: #000;
-}
-
-/* Icon links */
-.bx-links {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 15px;
-}
-
-.bx-links li a {
-  color: #333;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
-}
-
-.bx-links li a:hover {
-  color: #333;
-}
-
-@media (max-width: 576px) {
-   .row{
-    padding-left: 20px;
-   }
-   .sec-title h2{
-    line-height: 1;
-   }
-    
-  }
-
-          </style>
-
-<div class="landing-page">
-  <h1>Wishmewell Apartment</h1>
-  <h3>Your luxury, our care.</h3>
-</div>
-          <!-- <div class="">
-            <h1 class="lp" style="">
-              Wishmewell Apartment <span style="color: #FFF;"></span>
-            </br>
-          </h1>
-          <h3 class="" style="margin-top: -30px;color: #fff;font-style: italic;">Your luxury our care..</h3>
-
-          </div> -->
-
-         
-          
-          
-   
-   
-          <!-- <a href="page-about.html" class="btn" data-animation-in="fadeInUp" data-delay-in="0.5">rooms & suites</a> -->
         </div>
       </div>
+
+      <div class="banner-slide" data-delay-in="0.9">
+        <figure class="image"><img src="https://res.cloudinary.com/bada/image/upload/v1732987148/wishmewell/IMG_5731_Large_qs0ukk.png" alt=""></figure>
+        <div class="content-box">
+        <div class="landing-page">
+          <h1>Wishmewell Apartment</h1>
+          <h3>Your luxury, our care.</h3>
+        </div>
+        </div>
+      </div>
+      <div class="banner-slide" data-delay-in="0.9">
+        <figure class="image"><img src="https://res.cloudinary.com/bada/image/upload/v1732987117/wishmewell/IMG_5728_Large_zyzxop.png" alt=""></figure>
+        <div class="content-box">
+        <div class="landing-page">
+          <h1>Wishmewell Apartment</h1>
+          <h3>Your luxury, our care.</h3>
+        </div>
+        </div>
+      </div>
+      <div class="banner-slide" data-delay-in="0.9">
+        <figure class="image"><img src="https://res.cloudinary.com/bada/image/upload/v1732987064/wishmewell/IMG_5691_Large_w6wcyk.png" alt=""></figure>
+        <div class="content-box">
+        <div class="landing-page">
+          <h1>Wishmewell Apartment</h1>
+          <h3>Your luxury, our care.</h3>
+        </div>
+        </div>
+      </div>
+      <div class="banner-slide" data-delay-in="0.9">
+        <figure class="image"><img src="https://res.cloudinary.com/bada/image/upload/v1732986748/wishmewell/IMG_5501_Large_vx6eh4.png" alt=""></figure>
+        <div class="content-box">
+        <div class="landing-page">
+          <h1>Wishmewell Apartment</h1>
+          <h3>Your luxury, our care.</h3>
+        </div>
+        </div>
+      </div>
+      <div class="banner-slide" data-delay-in="0.9">
+        <figure class="image"><img src="https://res.cloudinary.com/bada/image/upload/v1732987008/wishmewell/IMG_5680_Large_avnbue.png" alt=""></figure>
+        <div class="content-box">
+        <div class="landing-page">
+          <h1>Wishmewell Apartment</h1>
+          <h3>Your luxury, our care.</h3>
+        </div>
+        </div>
+      </div>
+
+
+    
+      <!-- <div class="banner-slide" data-delay-in="0.9">
+        <figure class="image"><img src="https://res.cloudinary.com/bada/image/upload/v1732987052/wishmewell/IMG_5682_scepm1.heic.png" alt=""></figure>
+        <div class="content-box">
+        <div class="landing-page">
+          <h1>Wishmewell Apartment</h1>
+          <h3>Your luxury, our care.</h3>
+        </div>
+        </div>
+      </div> -->
      
    
     </div>
@@ -444,14 +486,14 @@
         <!-- Image Column -->
         <div class="image-column col-xl-6 col-lg-6">
           <div class="inner-column wow fadeInLeft" data-wow-delay="400ms">
-            <figure class="image-1 overlay-anim wow fadeInUp"><img style="height: 500px;object-fit: cover;" src="images/banner/banner-5.png" alt=""></figure>
-            <figure class="image-2 overlay-anim wow fadeInLeft"><img src="images/banner/banner-5.png" alt=""></figure>
-            <div class="btn-box">
+            <figure class="image-1 overlay-anim wow fadeInUp"><img style="" src="https://res.cloudinary.com/bada/image/upload/v1732986602/wishmewell/IMG_5260_Large_nvybtq.png" alt=""></figure>
+            <figure class="image-2 overlay-anim wow fadeInLeft"><img src="https://res.cloudinary.com/bada/image/upload/v1732986711/wishmewell/IMG_5437_Large_h7ibuq.png" alt=""></figure>
+            <!-- <div class="btn-box">
               <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" class="play-now-two" data-fancybox="gallery" data-caption="">
                 <i class="icon fa fa-play" aria-hidden="true"></i>
                 <span class="ripple"></span>
               </a>
-            </div>
+            </div> -->
             <!-- <div class="exp-box bounce-y"> -->
               <!-- <figure class=" overlay-anim wow fadeInLeft"><img height="10px" width="50px" src="images/logo-2.png" alt=""></figure> -->
               <!-- <h4 class="title">Luxury Room</h4> -->
