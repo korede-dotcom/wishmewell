@@ -105,6 +105,7 @@ const showRoom = asynchandler(async (req,res) => {
             .execute();
       
           const images = result.resources.map((img) => img.secure_url); // Get image URLs
+          console.log("🚀 ~ showRoom ~ images:", images.length)
           res.render('show', { images });
         } catch (error) {
           console.error('Error fetching images from Cloudinary:', error);
