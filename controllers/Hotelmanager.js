@@ -101,7 +101,7 @@ const showRoom = asynchandler(async (req,res) => {
           const result = await cloudinary.search
             .expression(`folder:${process.env.folder_name}`) // Specify the folder
             .sort_by('created_at', 'desc') // Optional: sort by creation date
-            // .max_results(50) // Adjust the limit as needed
+            .max_results(100) // Adjust the limit as needed
             .execute();
       
           const images = result.resources.map((img) => img.secure_url); // Get image URLs
