@@ -1,6 +1,7 @@
 const hotelConfigRepository = require("../repos/Room-repo")
 const asynchandler = require("express-async-handler")
 const cloudinaryRepo = require("../repos/cloudinary");
+const cloudinary = require('cloudinary').v2;
 const RoomNumber = require("../models/RoomNumbers");
 const Room = require("../models/Room");
 const HotelBooking = require("../models/HotelBooking");
@@ -88,29 +89,32 @@ const getBookings = asynchandler( async (req,res) => {
 
 
 
+const showRoom = asynchandler(async (req,res) => {
+
+    cloudinary.config({
+        cloud_name: process.env.cloud_name,
+        api_key: process.env.api_key,
+        api_secret: process.env.api_secret,
+      });
+    
+        try {
+          const result = await cloudinary.search
+            .expression(`folder:${process.env.folder_name}`) // Specify the folder
+            .sort_by('created_at', 'desc') // Optional: sort by creation date
+            // .max_results(50) // Adjust the limit as needed
+            .execute();
+      
+          const images = result.resources.map((img) => img.secure_url); // Get image URLs
+          res.render('show', { images });
+        } catch (error) {
+          console.error('Error fetching images from Cloudinary:', error);
+          res.status(500).send('Error fetching images');
+        }
+    
+
+})
 const clientHotelRoom = asynchandler(async (req,res) => {
     const pkgs = await hotelConfigRepository.roomCategorys()
-    // const currentTime = new Date();
-
-
- 
-
-
-    // Fetch marquees where the current time is between start and end times
-    
-    // const activeMarquees = await Marque.findOne({
-    //   where: {
-    //     startTime: {
-    //       [Op.lte]: currentTime  // Less than or equal to current time
-    //     },
-    //     endTime: {
-    //       [Op.gte]: currentTime   // Greater than or equal to current time
-    //     }
-    //   }
-    // });
-
-
-    // Fetch active marquees where current time is between startTime and endTime
     const currentTime = moment().format('YYYY-MM-DD HH:mm:ss'); // Ensure correct format
     
     const activeMarquees = await Marque.findOne({
@@ -686,7 +690,8 @@ module.exports = {
     contact,
     createhotelpkgCat,
     clientTerms,
-    roomReport
+    roomReport,
+    showRoom
 };
 
 
