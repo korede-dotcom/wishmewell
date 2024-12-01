@@ -312,6 +312,8 @@ padding-left: 20px;
 line-height: 1;
 }
 
+
+
 }
 
   </style>
@@ -518,25 +520,29 @@ line-height: 1;
         <div class="row">
           <style>
              .image-2 img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-  }
+              width: 100%;
+              height: 500px;
+              object-fit: cover; /* Ensures the image covers the area without distortion */
+            }
 
   /* Optional: Add some margin for small screens to better center */
-  @media (max-width: 576px) {
-    .room-block {
-      margin-bottom: 20px;
-      
-    }
-    .image-2 img{
-      margin-inline: 10px;
-    }
-    
-  }
+          @media (max-width: 576px) {
+            .room-block {
+              margin-bottom: 20px;
+              
+            }
+            .image-2 img{
+              margin-inline: 10px;
+            }
+            
+          }
           </style>
+
+
+
+
           
-          <div class="row"  >
+          <div class="row">
             <% pkgs.forEach(pkg => { %>
               <!-- Each package as a column -->
               <div class="room-block col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
@@ -568,90 +574,7 @@ line-height: 1;
         </div>
         
         
-        <!-- room-block -->
-        <!-- <div class="room-block col-lg-6 col-md-6 col-sm-12">
-          <div class="inner-box wow fadeIn" data-wow-delay="200ms">
-            <div class="image-box">
-              <figure class="image-2 overlay-anim"><img src="images/resource/room-2.jpg" alt=""></figure>
-            </div>
-            <div class="content-box">
-              <h6 class="title"><a >Family Room</a></h6>
-              <span class="price">200$ / NIGHT</span>
-            </div>
-            <div class="box-caption">
-              <a  title="" class="book-btn">book now</a>
-              <ul class="bx-links">
-                <li><a  title=""><i class="fa fa-wifi"></i></a></li>
-                <li><a  title=""><i class="fa fa-bed"></i></a></li>
-                <li><a  title=""><i class="fa fa-bath"></i></a></li>
-                <li><a  title=""><i class="fa fa-shower"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
-        <!-- room-block -->
-        <!-- <div class="room-block col-lg-3 col-md-6 col-sm-12">
-          <div class="inner-box wow fadeIn" data-wow-delay="300ms">
-            <div class="image-box">
-              <figure class="image-2 overlay-anim"><img src="images/resource/room-3.jpg" alt=""></figure>
-            </div>
-            <div class="content-box">
-              <h6 class="title"><a >Double Room</a></h6>
-              <span class="price">250$ / NIGHT</span>
-            </div>
-            <div class="box-caption">
-              <a  title="" class="book-btn">book now</a>
-              <ul class="bx-links">
-                <li><a  title=""><i class="fa fa-wifi"></i></a></li>
-                <li><a  title=""><i class="fa fa-bed"></i></a></li>
-                <li><a  title=""><i class="fa fa-bath"></i></a></li>
-                <li><a  title=""><i class="fa fa-shower"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
-        <!-- room-block -->
-        <!-- <div class="room-block col-lg-6 col-md-6 col-sm-12">
-          <div class="inner-box large-style wow fadeIn" data-wow-delay="400ms">
-            <div class="image-box">
-              <figure class="image-2 overlay-anim"><img src="images/resource/room-4.jpg" alt=""></figure>
-            </div>
-            <div class="content-box">
-              <h6 class="title"><a >Double Room</a></h6>
-              <span class="price">250$ / NIGHT</span>
-            </div>
-            <div class="box-caption">
-              <a  title="" class="book-btn">book now</a>
-              <ul class="bx-links">
-                <li><a  title=""><i class="fa fa-wifi"></i></a></li>
-                <li><a  title=""><i class="fa fa-bed"></i></a></li>
-                <li><a  title=""><i class="fa fa-bath"></i></a></li>
-                <li><a  title=""><i class="fa fa-shower"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
-        <!-- room-block -->
-        <!-- <div class="room-block col-lg-3 col-md-6 col-sm-12">
-            <div class="inner-box wow fadeIn" data-wow-delay="500ms">
-              <div class="image-box">
-                <figure class="image-2 overlay-anim"><img src="images/resource/room-5.jpg" alt=""></figure>
-              </div>
-              <div class="content-box">
-                <h6 class="title"><a >Deluxe Room</a></h6>
-                <span class="price">300$ / NIGHT</span>
-              </div>
-              <div class="box-caption">
-                <a  title="" class="book-btn">book now</a>
-                <ul class="bx-links">
-                  <li><a  title=""><i class="fa fa-wifi"></i></a></li>
-                  <li><a  title=""><i class="fa fa-bed"></i></a></li>
-                  <li><a  title=""><i class="fa fa-bath"></i></a></li>
-                  <li><a  title=""><i class="fa fa-shower"></i></a></li>
-                </ul>
-              </div>
-            </div>
-        </div> -->
+        
       </div>
     </div>
   </section>
