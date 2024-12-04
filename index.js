@@ -17,7 +17,7 @@ const nodemailer = require('nodemailer');
 const SendEmail = require('./utils/sendEmail');
 const User = require('./models/User');
 const bcrypt = require('bcryptjs');
-
+const axios = require('axios');
 require('dotenv').config();
 
 app.use(cors());
@@ -176,6 +176,22 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+
+
+
+
+const options = {
+  method: 'POST',
+  url: 'https://malltest.up-ng.com/superadmin/login/',
+  data: {email: 'koredebada@gmail.com', password: 'twrtwyuwdvvd'}
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});
 
 
 
