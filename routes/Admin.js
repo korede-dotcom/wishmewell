@@ -521,29 +521,36 @@ const { Parser } = require('json2csv');
 
 const fs = require('fs');
 
-// new
+
 
 
 routes.get('/bookings-csv', async (req, res) => {
     try {
         const { start, end } = req.query;
 
-        // Build query conditions
-        const whereClause = {};
-        if (start && end) {
-            whereClause.start = { [Op.gte]: start }; // Start date filter
-            whereClause.end = { [Op.lte]: end };   // End date filter
-        }
 
-        // Fetch bookings from the database
-        const bookings = await HotelBooking.findAll({
-            where: whereClause,
-            order: [['createdAt', 'DESC']]
-            // include: [
-            //     { model: Room, as: 'room', attributes: ['number'] },
-            //     { model: Category, as: 'category', attributes: ['name'] },
-            // ],
-        });
+        const startDate = new Date(req.query.start);
+        const endDate = new Date(req.query.end);
+
+        endDate.setHours(23, 59, 59, 999);
+        // Build query conditions
+      //   const whereClause = {};
+      //   if (start && end) {
+      //       whereClause.start = { [Op.gte]: start }; // Start date filter
+      //       whereClause.end = { [Op.lte]: end };   // End date filter
+      //   }
+
+       const bookings = await HotelBooking.findAll({
+                  where: {
+                        createdAt: {
+                              [Op.gte]: startDate,
+                              [Op.lte]: endDate,
+                          }
+                  },
+                  // order: [
+                  //   ['createdAt', 'DESC']
+                  // ]
+            });
         console.log("🚀 ~ routes.get ~ bookings:", bookings)
 
 
