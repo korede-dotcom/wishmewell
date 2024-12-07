@@ -27,6 +27,8 @@ routes.get("/",async (req,res) => {
             });
           
       })
+
+      
 routes.get("/dashboard/monthly-bookings",checkAuthCookie,async (req,res) => {
       const monthlyData = await HotelBooking.findAll({
             attributes: [
@@ -507,6 +509,82 @@ routes.get("/all-booking",checkAuthCookie,async (req, res) => {
             totalAmount:totalAmount
           })
 })
+
+
+
+
+
+
+
+
+const { Parser } = require('json2csv');
+
+const fs = require('fs');
+
+
+routes.get('/bookings-csv', async (req, res) => {
+    try {
+        const { start, end } = req.query;
+
+        // Build query conditions
+        const whereClause = {};
+        if (start && end) {
+            whereClause.start = { [Op.gte]: start }; // Start date filter
+            whereClause.end = { [Op.lte]: end };   // End date filter
+        }
+
+        // Fetch bookings from the database
+        const bookings = await HotelBooking.findAll({
+            where: whereClause,
+            order: [['createdAt', 'DESC']]
+            // include: [
+            //     { model: Room, as: 'room', attributes: ['number'] },
+            //     { model: Category, as: 'category', attributes: ['name'] },
+            // ],
+        });
+
+        // Format data
+        const formattedData = bookings.map((booking, index) => ({
+            "S/N": index + 1,
+            "Booking ID": booking.reference_id || '',
+            "Name": booking.guest_name || '',
+            "Amount": booking.amount ? (booking.amount / 100).toFixed(2) : '0.00',
+            "Room Type": booking.category_name || '',
+            "Room Number": booking.room_number || '',
+            "Booked From": booking.booked_from || '',
+            "Arrival Date": booking.start ? new Date(booking.start).toLocaleDateString('en-GB') : 'N/A',
+            "Departure Date": booking.end ? new Date(booking.end).toLocaleDateString('en-GB') : 'N/A',
+            "Email": booking.guest_email || '',
+            "Phone Number": booking.guest_phone || '',
+            "Status": booking.status || '',
+            "Booking Time": booking.createdAt ? new Date(booking.createdAt).toLocaleString('en-GB') : 'N/A',
+            "Checked": booking.checked_in || '',
+            "Checked By": booking.checked_in_by || '',
+        }));
+
+        // Convert to CSV
+        const json2csvParser = new Parser();
+        const csv = json2csvParser.parse(formattedData);
+
+        const fileName = `bookings_${start || 'all'}_${end || 'all'}.csv`;
+
+        // Set headers and send response
+        res.header('Content-Type', 'text/csv');
+        res.attachment(fileName);
+        res.send(csv);
+    } catch (error) {
+        console.error('Error generating CSV:', error);
+        res.status(500).send('Error generating CSV');
+    }
+});
+
+
+  
+
+
+
+
+
 routes.get("/add-booking",checkAuthCookie,async (req, res) => {
 
       if(req.query.id && req.query.cat_id){
