@@ -544,6 +544,8 @@ routes.get('/bookings-csv', async (req, res) => {
             //     { model: Category, as: 'category', attributes: ['name'] },
             // ],
         });
+        console.log("🚀 ~ routes.get ~ bookings:", bookings)
+
 
         // Format data
         const formattedData = bookings.map((booking, index) => ({
