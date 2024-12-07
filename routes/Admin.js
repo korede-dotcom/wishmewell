@@ -560,7 +560,7 @@ routes.get('/bookings-csv', async (req, res) => {
             "Booking ID": booking.reference_id || '',
             "Name": booking.guest_name || '',
             "Amount": booking.amount ? (booking.amount / 100).toFixed(2) : '0.00',
-            "Room Type": booking.category_name || '',
+            "Room Type": booking.room_name || '',
             "Room Number": booking.room_number || '',
             "Booked From": booking.booked_from || '',
             "Arrival Date": booking.start ? new Date(booking.start).toLocaleDateString('en-GB') : 'N/A',
