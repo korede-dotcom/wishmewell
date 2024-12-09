@@ -37,10 +37,9 @@
 <li>Booked By: 
 	<span>
 		<%= bookings.booked_by.trim() === '' ? 'self' : bookings.booked_by %>
-	</span>
-	
-	
+	</span>	
 </li>
+<a href="/payments/result?reference=<%= bookings.reference_id %>" class="btn btn-primary btn-block">Generate receipt</a>
 </ul>
 </div>
 </div>
