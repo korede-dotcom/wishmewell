@@ -32,6 +32,7 @@
 										  <div class="col-md-4">
 											<label>&nbsp;</label>
 											<button type="submit" class="btn btn-primary btn-block">Filter</button>
+											<button id="download-csv" class="btn btn-success btn-block">Download CSV</button>
 											<a style="color: #c19b76;float: right;" href="/portal/all-booking">See All</a>
 										  </div>
 										</div>
@@ -225,6 +226,38 @@
 		  // Show the "Go Back" button if a search was performed
 		  document.getElementById('goBackButton').style.display = 'block';
 		}
+
+		const urlParams = new URLSearchParams(window.location.search);
+		const start = urlParams.get('start');
+		console.log("🚀 ~ start:", start)
+		const end = urlParams.get('end');
+		console.log("🚀 ~ end:", end)
+		if (start === null || end === null) {
+		
+			document.getElementById('download-csv').style.display = 'none';
+
+		}
+		
+		document.getElementById('download-csv').addEventListener('click', () => {
+			
+			if (!start || !end) {
+				alert('Please select a date range.');
+				return;
+			}
+
+    // Build the request URL
+    let requestUrl = '/portal/bookings-csv';
+    if (start && end) {
+        requestUrl += `?start=${start}&end=${end}`;
+    }
+
+    // Create an anchor element to open in a new tab
+    const link = document.createElement('a');
+    link.href = requestUrl;
+    // link.target = '_blank'; // Open in a new tab or window
+    link.click(); // Trigger the click programmatically
+
+});
 
 		
 	  </script>
