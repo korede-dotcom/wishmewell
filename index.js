@@ -143,7 +143,7 @@ app.use(cors());
         console.error('Error updating room status:', error.stack);
       }
     });
-    
+    // djdjd
 
 
     const findAllPaymentModes = await PaymentMode.findAll();
@@ -180,18 +180,6 @@ app.use(cookieParser());
 
 
 
-
-const options = {
-  method: 'POST',
-  url: 'https://malltest.up-ng.com/superadmin/login/',
-  data: {email: 'koredebada@gmail.com', password: 'twrtwyuwdvvd'}
-};
-
-axios.request(options).then(function (response) {
-  console.log(response.data);
-}).catch(function (error) {
-  console.error(error);
-});
 
 
 
