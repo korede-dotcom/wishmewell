@@ -1,0 +1,160 @@
+<%- include('partial/header', { title: 'Wishmewell Apartment',email:email,roleName:roleName }) %>
+<%- include('partial/sidebar', { name: name}) %>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  #calendar {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  /* Change color of day names (e.g., Sun, Mon, Tue) */
+.fc-col-header-cell {
+  color: #000; /* Black color */
+}
+
+/* Change color of date numbers (e.g., 1, 2, 3) */
+.fc-daygrid-day-number {
+  color: #000; /* Black color */
+}
+
+/* Optional: Adjust the title (month and year) to be black as well */
+.fc-toolbar-title {
+  color: #000; /* Black color */
+}
+.fc .fc-col-header-cell-cushion {
+    color: #000 !important;
+}
+/* Ensure the calendar container takes full width and height */
+#calendar {
+  width: 100%;
+}
+
+/* Optional: Remove margins or padding in parent containers for a seamless fit */
+.row,
+.col-sm-12 {
+  margin: 0;
+  padding: 0;
+}
+
+
+</style>
+
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col">
+							<div class="mt-5">
+								<h4 class="card-title float-left mt-2">calender</h4>
+                                <!-- <a href="/portal/add-booking" class="btn btn-primary float-right veiwbutton ">Add Booking</a> -->
+                            </div>
+						</div>
+					</div>
+				
+				</div>
+				
+				<div class="row">
+					<!-- <div class="col-sm-12"> -->
+                        <div id="calendar"></div>
+					<!-- </div> -->
+				</div>
+			</div>
+			<div id="delete_asset" class="modal fade delete-modal" role="dialog">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-body text-center"> <img src="assets/img/sent.png" alt="" width="50" height="46">
+							<h3 class="delete_class">Are you sure want to delete this Asset?</h3>
+							<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+	<script src="assets/js/jquery-3.5.1.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="assets/plugins/datatables/datatables.min.js"></script>
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/plugins/raphael/raphael.min.js"></script>
+	<script src="assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  // Bookings data (passed from server-side)
+  var bookings = JSON.parse('<%- bookings %>');
+  console.log("🚀 ~ document.addEventListener ~ bookings:", bookings);
+
+  // Format bookings for FullCalendar events
+  var events = bookings.map(booking => ({
+    title: booking.guest_name + ' - ' + booking.room_name + ' - ' + booking.night_name + ' - ' + booking.checked_in_by,
+    start: booking.start,
+    end: booking.end,
+    backgroundColor: '#c19b76', // Background color for events
+    borderColor: '#c19b76',     // Border color for events
+    textColor: '#fff',          // Optional: Text color for readability
+    description: `
+      Room: ${booking.room_name} (${booking.room_number})<br>
+      Guest: ${booking.guest_name}<br>
+      Amount: $${(booking.amount / 100).toFixed(2)}<br>
+      Nights: ${booking.night}
+    `
+  }));
+
+  // Initialize FullCalendar
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: events,
+    eventDidMount: function(info) {
+      var tooltip = document.createElement('div');
+      tooltip.innerHTML = info.event.extendedProps.description;
+      tooltip.style.position = 'absolute';
+      tooltip.style.padding = '5px';
+      tooltip.style.background = '#fff';
+      tooltip.style.border = '1px solid #ddd';
+      tooltip.style.borderRadius = '5px';
+      tooltip.style.display = 'none';
+      tooltip.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+      tooltip.className = 'tooltip';
+      document.body.appendChild(tooltip);
+
+      info.el.addEventListener('mouseenter', function() {
+        tooltip.style.display = 'block';
+        tooltip.style.left = (info.el.getBoundingClientRect().left + window.scrollX + 20) + 'px';
+        tooltip.style.top = (info.el.getBoundingClientRect().top + window.scrollY + 20) + 'px';
+      });
+
+      info.el.addEventListener('mouseleave', function() {
+        tooltip.style.display = 'none';
+      });
+    }
+  });
+
+  calendar.render();
+});
+
+      </script>
+
+	  
+</body>
+
+</html>

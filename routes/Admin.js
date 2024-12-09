@@ -327,6 +327,7 @@ routes.get("/all-booking",checkAuthCookie,async (req, res) => {
       const endDate = new Date(); // Get the current date
       endDate.setHours(23, 59, 59, 999);
       const bookings = await HotelBooking.findAll({order: [['createdAt', 'DESC']]})
+      console.log("🚀 ~ routes.get ~ bookings:", bookings)
       
       const totalAmount = await HotelBooking.sum('amount', {
             where: {
@@ -505,6 +506,25 @@ routes.get("/all-booking",checkAuthCookie,async (req, res) => {
             start: startDate,
             end: endDate,
             totalAmount:totalAmount
+          })
+})
+
+routes.get("/all-bookings-calendar",checkAuthCookie,async (req, res, next) => {
+      const hotelbookings = await HotelBooking.findAll({order: [['createdAt', 'DESC']]})
+      // const sanitizedBookings = hotelbookings.map(booking => ({
+      //       id: booking.id,
+      //       start: booking.start,
+      //       end: booking.end,
+      //       guest_name: booking.guest_name,
+      // }));
+      // console.log("🚀 ~ sanitizedBookings ~ sanitizedBookings:", sanitizedBookings)
+          
+      // const categories = await RoomRepo.roomCategorys()
+      res.render('calendar', {
+            name: req.user.name ,
+            email: req.user.email ,
+            roleName:req.user.roleName,
+            bookings : JSON.stringify(hotelbookings).replace(/'/g, "\\'")
           })
 })
 routes.get("/add-booking",checkAuthCookie,async (req, res) => {
