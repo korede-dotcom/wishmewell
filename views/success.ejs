@@ -454,6 +454,7 @@
    window.onload = function() {
             // Select the element to capture
             const content = document.getElementById("content");
+            var guestName = "<%= booking.guest_name %>";
 
             // Use html2canvas to capture the content
             html2canvas(content).then(canvas => {
@@ -463,7 +464,7 @@
                 // Create a link element to download the image
                 const link = document.createElement("a");
                 link.href = dataURL;
-                link.download = "screenshot.png"; // The name of the downloaded image
+                link.download =`${guestName}.png`; // The name of the downloaded image
 
                 // Trigger the download automatically
                 link.click();
