@@ -71,7 +71,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Event Details</h5>
+                <h5 class="modal-title">Booking Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -195,6 +195,8 @@
       amount: (booking.amount / 100).toFixed(2),
       nights: booking.night,
       checkedInBy: booking.checked_in_by,
+      start: booking.start,
+      end:booking.end
     }
   }));
 
@@ -213,8 +215,10 @@
         <h4>${info.event.title}</h4>
         <p><strong>Room:</strong> ${info.event.extendedProps.roomName} (${info.event.extendedProps.roomNumber})</p>
         <p><strong>Guest:</strong> ${info.event.extendedProps.guestName}</p>
-        <p><strong>Amount:</strong> $${info.event.extendedProps.amount}</p>
+        <p><strong>Amount:</strong> #${(info.event.extendedProps.amount / 100).toFixed(2)}</p>
         <p><strong>Nights:</strong> ${info.event.extendedProps.nights}</p>
+        <p><strong>checkIn</strong> ${info.event.extendedProps.start.split('T')[0]}</p>
+        <p><strong>checkOut</strong> ${info.event.extendedProps.end.split('T')[0]}</p>
         <p><strong>Checked In By:</strong> ${info.event.extendedProps.checkedInBy}</p>
       `;
 
