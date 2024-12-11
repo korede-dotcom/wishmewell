@@ -215,7 +215,7 @@
         <h4>${info.event.title}</h4>
         <p><strong>Room:</strong> ${info.event.extendedProps.roomName} (${info.event.extendedProps.roomNumber})</p>
         <p><strong>Guest:</strong> ${info.event.extendedProps.guestName}</p>
-<p><strong>Amount:</strong>#${(Number(info.event.extendedProps.amount) * 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
+<p><strong>Amount:</strong>#${Number(info.event.extendedProps.amount).toLocaleString()}</p>
         <p><strong>Nights:</strong> ${info.event.extendedProps.nights}</p>
         <p><strong>checkIn</strong> ${info.event.extendedProps.start.split('T')[0]}</p>
         <p><strong>checkOut</strong> ${info.event.extendedProps.end.split('T')[0]}</p>
