@@ -67,6 +67,25 @@
                         <div id="calendar"></div>
 					</div>
 				</div>
+        <div id="detailsModal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Event Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="eventDetails">
+                <!-- Event details will be dynamically populated here -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
 			</div>
 			<div id="delete_asset" class="modal fade delete-modal" role="dialog">
 				<div class="modal-dialog modal-dialog-centered">
@@ -91,7 +110,7 @@
 	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/plugins/raphael/raphael.min.js"></script>
 	<script src="assets/js/script.js"></script>
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
@@ -101,7 +120,7 @@
 
   // Format bookings for FullCalendar events
   var events = bookings.map(booking => ({
-    title: booking.guest_name + ' - ' + booking.room_name + ' - ' + booking.night_name + ' - ' + booking.checked_in_by,
+    title: booking.guest_name + ' - ' + booking.room_name + ' - ' + booking.night + ' - ' + booking.checked_in_by,
     start: booking.start,
     end: booking.end,
     backgroundColor: '#c19b76', // Background color for events
@@ -152,8 +171,62 @@
   calendar.render();
 });
 
-      </script>
+      </script> -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+  var calendarEl = document.getElementById('calendar');
 
+  // Bookings data (passed from server-side)
+  var bookings = JSON.parse('<%- bookings %>');
+  console.log("🚀 ~ document.addEventListener ~ bookings:", bookings);
+
+  // Format bookings for FullCalendar events
+  var events = bookings.map(booking => ({
+    title: booking.guest_name + ' - ' + booking.room_name + ' - ' + booking.night + ' - ' + booking.checked_in_by,
+    start: booking.start,
+    end: booking.end,
+    backgroundColor: '#c19b76', // Background color for events
+    borderColor: '#c19b76',     // Border color for events
+    textColor: '#fff',          // Optional: Text color for readability
+    extendedProps: {
+      roomName: booking.room_name,
+      roomNumber: booking.room_number,
+      guestName: booking.guest_name,
+      amount: (booking.amount / 100).toFixed(2),
+      nights: booking.night,
+      checkedInBy: booking.checked_in_by,
+    }
+  }));
+
+  // Initialize FullCalendar
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: events,
+    eventClick: function (info) {
+      // Populate modal with event details
+      var modalContent = `
+        <h4>${info.event.title}</h4>
+        <p><strong>Room:</strong> ${info.event.extendedProps.roomName} (${info.event.extendedProps.roomNumber})</p>
+        <p><strong>Guest:</strong> ${info.event.extendedProps.guestName}</p>
+        <p><strong>Amount:</strong> $${info.event.extendedProps.amount}</p>
+        <p><strong>Nights:</strong> ${info.event.extendedProps.nights}</p>
+        <p><strong>Checked In By:</strong> ${info.event.extendedProps.checkedInBy}</p>
+      `;
+
+      document.getElementById('eventDetails').innerHTML = modalContent;
+      $('#detailsModal').modal('show'); // Show the modal using Bootstrap
+    }
+  });
+
+  calendar.render();
+});
+
+      </script>
 	  
 </body>
 
