@@ -95,6 +95,30 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   // });
   // console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms)
 
+
+  // const { start, end, category_id, room_number } = req.body;
+
+const query = `
+  SELECT 
+    "id", "start", "end", "room_name", "room_number", 
+    "guest_name", "category_id", "room_id", "status"
+  FROM "hotelbookings"
+  WHERE 
+    "end" > $1::DATE
+    AND "start" <= $2::DATE
+    AND "category_id" = $3
+    AND "room_number" = $4
+    AND "status" = 'success'
+  LIMIT 1;
+`;
+
+const values = [start, end, category_id, room_number];
+
+// Execute query
+const result = await HotelBooking.sequelize.query(query, values);
+console.log("🚀 ~ routes.post ~ result:", result)
+
+
   const bookedRooms = await HotelBooking.findOne({
     where: {
       category_id: req.body.category_id,
