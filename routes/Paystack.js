@@ -98,27 +98,27 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
 
   // const { start, end, category_id, room_number } = req.body;
 
-  const query = `
-  SELECT 
-    "id", "start", "end", "room_name", "room_number", 
-    "guest_name", "category_id", "room_id", "status"
-  FROM "hotelbookings"
-  WHERE 
-    NOT (
-      "end" <= '${start}'::DATE OR 
-      "start" >= '${end}'::DATE
-    )
-    AND "category_id" = '${category_id}'
-    AND "room_number" = '${room_number}'
-    AND "status" = 'success'
-  LIMIT 1;
-`;
+//   const query = `
+//   SELECT 
+//     "id", "start", "end", "room_name", "room_number", 
+//     "guest_name", "category_id", "room_id", "status"
+//   FROM "hotelbookings"
+//   WHERE 
+//     NOT (
+//       "end" <= '${start}'::DATE OR 
+//       "start" >= '${end}'::DATE
+//     )
+//     AND "category_id" = '${category_id}'
+//     AND "room_number" = '${room_number}'
+//     AND "status" = 'success'
+//   LIMIT 1;
+// `;
 
-const values = [start, end, category_id, room_number];
+// const values = [start, end, category_id, room_number];
 
-// Execute query
-const result = await HotelBooking.sequelize.query(query, values);
-console.log("🚀 ~ routes.post ~ result:", result)
+// // Execute query
+// const result = await HotelBooking.sequelize.query(query, values);
+// console.log("🚀 ~ routes.post ~ result:", result)
 
 
   const bookedRooms = await HotelBooking.findOne({
@@ -129,12 +129,12 @@ console.log("🚀 ~ routes.post ~ result:", result)
       [Op.and]: [
         {
           end: {
-            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}', 'YYYY-MM-DD HH24:MI:SS')`)
           }
         },
         {
           start: {
-            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}', 'YYYY-MM-DD HH24:MI:SS')`)
           }
         }
       ]
