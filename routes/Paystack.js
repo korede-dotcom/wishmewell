@@ -104,8 +104,10 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
     "guest_name", "category_id", "room_id", "status"
   FROM "hotelbookings"
   WHERE 
-    "end" > '${start}'::DATE
-    AND "start" <= '${end}'::DATE
+    NOT (
+      "end" <= '${start}'::DATE OR 
+      "start" >= '${end}'::DATE
+    )
     AND "category_id" = '${category_id}'
     AND "room_number" = '${room_number}'
     AND "status" = 'success'
