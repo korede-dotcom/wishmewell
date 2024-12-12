@@ -54,46 +54,66 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   // Parse the end date
   const endDatee = moment(end, "DD-MM-YYYY").format("YYYY-MM-DD");
 
+  // const bookedRooms = await HotelBooking.findOne({
+  //   where: {
+  //       category_id,
+  //       status:"success",
+  //       room_number,
+  //       [Op.or]: [
+  //           {
+  //               start: {
+  //                   [Op.between]: [
+  //                       Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`),
+  //                       Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+  //                   ]
+  //               }
+  //           },
+  //           {
+  //               end: {
+  //                   [Op.between]: [
+  //                       Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`),
+  //                       Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+  //                   ]
+  //               }
+  //           },
+  //           {
+  //               [Op.and]: [
+  //                   {
+  //                       start: {
+  //                           [Op.lte]: Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+  //                       }
+  //                   },
+  //                   {
+  //                       end: {
+  //                           [Op.gte]: Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+  //                       }
+  //                   }
+  //               ]
+  //           }
+  //       ]
+  //   }
+  // });
+  // console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms)
+
   const bookedRooms = await HotelBooking.findOne({
     where: {
-        category_id,
-        status:"success",
-        room_number,
-        [Op.or]: [
-            {
-                start: {
-                    [Op.between]: [
-                        Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`),
-                        Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
-                    ]
-                }
-            },
-            {
-                end: {
-                    [Op.between]: [
-                        Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`),
-                        Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
-                    ]
-                }
-            },
-            {
-                [Op.and]: [
-                    {
-                        start: {
-                            [Op.lte]: Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
-                        }
-                    },
-                    {
-                        end: {
-                            [Op.gte]: Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
-                        }
-                    }
-                ]
-            }
-        ]
+      category_id,
+      status: "success",
+      room_number,
+      [Op.or]: [
+        {
+          // Overlapping start time
+          start: {
+            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+          },
+          end: {
+            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+          }
+        }
+      ]
     }
   });
-  console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms)
+  
 
 // if (bookedRooms > 0) {
 //   return res.json({
