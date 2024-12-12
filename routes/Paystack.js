@@ -98,16 +98,16 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
 
   // const { start, end, category_id, room_number } = req.body;
 
-const query = `
+  const query = `
   SELECT 
     "id", "start", "end", "room_name", "room_number", 
     "guest_name", "category_id", "room_id", "status"
   FROM "hotelbookings"
   WHERE 
-    "end" > $1::DATE
-    AND "start" <= $2::DATE
-    AND "category_id" = $3
-    AND "room_number" = $4
+    "end" > '${start}'::DATE
+    AND "start" <= '${end}'::DATE
+    AND "category_id" = '${category_id}'
+    AND "room_number" = '${room_number}'
     AND "status" = 'success'
   LIMIT 1;
 `;
