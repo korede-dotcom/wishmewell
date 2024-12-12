@@ -97,23 +97,25 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
 
   const bookedRooms = await HotelBooking.findOne({
     where: {
-      category_id,
+      category_id: req.body.category_id,
+      room_number: req.body.room_number,
       status: "success",
-      room_number,
       [Op.and]: [
         {
           end: {
-            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
           }
         },
         {
           start: {
-            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
+            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end} 12:00:00+01', 'YYYY-MM-DD HH24:MI:SS')`)
           }
         }
       ]
-    }
+    },
+    logging:console.log
   });
+  
   
   console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms);
   
