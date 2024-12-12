@@ -113,6 +113,7 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
       ]
     }
   });
+  console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms)
   
 
 // if (bookedRooms > 0) {
