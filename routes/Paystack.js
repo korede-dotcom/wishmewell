@@ -167,8 +167,8 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   //   logging: console.log
   // });
   console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms)
-  const today = new Date().toISOString().split('T')[0];
-  console.log("🚀 ~ routes.post ~ today=====================:", today)
+  const today = new Date(start).toISOString().split('T')[0];
+  
   
   
 
@@ -178,8 +178,13 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
 //     status: false
 // });
 // }
+let getEndFromBooked ;
+if(bookedRooms){
+  getEndFromBooked = new Date(bookedRooms.dataValues.end).toISOString().split('T')[0];
+  console.log("🚀 ~ routes.post ~ getEndFromBooked:", getEndFromBooked)
+}
 
-if (bookedRooms ) {
+if (bookedRooms && getEndFromBooked === start) {
   return res.json({
     message: `this room ${bookedRooms.dataValues.room_number} has been booked ${bookedRooms.dataValues.booked_from} since ${new Date(bookedRooms.dataValues.createdAt).toDateString()} for ${new Date(bookedRooms.dataValues.start).toDateString()} till ${new Date(bookedRooms.dataValues.end).toDateString()} here is the refrence ${bookedRooms.dataValues.reference_id} how ever you can make future bookings`,
     reference_id: bookedRooms.dataValues.reference_id,
