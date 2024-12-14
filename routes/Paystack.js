@@ -132,11 +132,11 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
             [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}', 'YYYY-MM-DD HH24:MI:SS')`)
           }
         },
-        // {
-        //   start: {
-        //     [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}', 'YYYY-MM-DD HH24:MI:SS')`)
-        //   }
-        // }
+        {
+          start: {
+            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}', 'YYYY-MM-DD HH24:MI:SS')`)
+          }
+        }
       ]
     },
     logging:console.log
@@ -167,7 +167,8 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   //   logging: console.log
   // });
   console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms)
-  
+  const today = new Date().toISOString().split('T')[0];
+  console.log("🚀 ~ routes.post ~ today=====================:", today)
   
   
 
@@ -177,7 +178,8 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
 //     status: false
 // });
 // }
-if (bookedRooms) {
+
+if (bookedRooms ) {
   return res.json({
     message: `this room ${bookedRooms.dataValues.room_number} has been booked ${bookedRooms.dataValues.booked_from} since ${new Date(bookedRooms.dataValues.createdAt).toDateString()} for ${new Date(bookedRooms.dataValues.start).toDateString()} till ${new Date(bookedRooms.dataValues.end).toDateString()} here is the refrence ${bookedRooms.dataValues.reference_id} how ever you can make future bookings`,
     reference_id: bookedRooms.dataValues.reference_id,
