@@ -150,12 +150,12 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
       [Op.and]: [
         {
           end: {
-            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}', 'YYYY-MM-DD')`)
+            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}')`)
           }
         },
         {
           start: {
-            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}', 'YYYY-MM-DD')`)
+            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}')`)
           }
         }
       ]
