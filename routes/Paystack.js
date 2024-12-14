@@ -147,12 +147,27 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
       category_id: req.body.category_id,
       room_number: req.body.room_number,
       status: "success",
-      end: {
-        [Op.gte]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}')`)
-      }
+      [Op.and]: [
+        {
+          end: {
+            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP(:start, 'YYYY-MM-DD HH24:MI:SS')`)
+          }
+        },
+        {
+          start: {
+            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP(:end, 'YYYY-MM-DD HH24:MI:SS')`)
+          }
+        }
+      ]
+    },
+    replacements: {
+      start: `${req.body.start} 00:00:00`, // Add time to the date
+      end: `${req.body.end} 23:59:59`     // Include full day range for "end"
     },
     logging: console.log
   });
+  
+  
   
 
 // if (bookedRooms > 0) {
