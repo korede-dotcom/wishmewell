@@ -34,17 +34,17 @@ function generateRandomString(length) {
 // console.log(randomString); // Example output: 'aB3dEfGh'
 
 routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandler( async (req, res) => {
-  const { category_id,  mode,room_number } = req.body;
+  const { category_id,start:strts,  mode,room_number } = req.body;
   console.log("🚀 ~ routes.post ~ req.body:", req.body)
 
   const currentDate = moment().format("YYYY-MM-DD");
 
   // Parse the start date
-  let startDatee = moment(start, "DD-MM-YYYY").format("YYYY-MM-DD");
-  console.log("🚀 ~ routes.post ~ startDatee:", startDatee)
+  // let startDatee = moment(start, "DD-MM-YYYY").format("YYYY-MM-DD");
+  // console.log("🚀 ~ routes.post ~ startDatee:", startDatee)
 
   // Check if the start date is in the past
-  if (moment(start).isBefore(currentDate)) {
+  if (moment(strts).isBefore(currentDate)) {
       return res.json({
           message: "Start date cannot be in the past. Please select a valid date.",
           status: false
