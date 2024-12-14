@@ -44,12 +44,12 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   console.log("🚀 ~ routes.post ~ startDatee:", startDatee)
 
   // Check if the start date is in the past
-  if (moment(start).isBefore(currentDate)) {
-      return res.json({
-          message: "Start date cannot be in the past. Please select a valid date.",
-          status: false
-      });
-  }
+  // if (moment(start).isBefore(currentDate)) {
+  //     return res.json({
+  //         message: "Start date cannot be in the past. Please select a valid date.",
+  //         status: false
+  //     });
+  // }
 
   // Parse the end date
   const endDatee = moment(end, "DD-MM-YYYY").format("YYYY-MM-DD");
