@@ -121,6 +121,27 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
 // console.log("🚀 ~ routes.post ~ result:", result)
 
 
+  // const bookedRooms = await HotelBooking.findOne({
+  //   where: {
+  //     category_id: req.body.category_id,
+  //     room_number: req.body.room_number,
+  //     status: "success",
+  //     [Op.and]: [
+  //       {
+  //         end: {
+  //           [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}', 'YYYY-MM-DD HH24:MI:SS')`)
+  //         }
+  //       },
+  //       {
+  //         start: {
+  //           [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}', 'YYYY-MM-DD HH24:MI:SS')`)
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   logging:console.log
+  // });
+  
   const bookedRooms = await HotelBooking.findOne({
     where: {
       category_id: req.body.category_id,
@@ -129,12 +150,12 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
       [Op.and]: [
         {
           end: {
-            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}', 'YYYY-MM-DD HH24:MI:SS')`)
+            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}', 'YYYY-MM-DD')`)
           }
         },
         {
           start: {
-            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}', 'YYYY-MM-DD HH24:MI:SS')`)
+            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}', 'YYYY-MM-DD')`)
           }
         }
       ]
