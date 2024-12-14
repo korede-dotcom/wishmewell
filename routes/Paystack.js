@@ -184,7 +184,7 @@ if(bookedRooms){
   console.log("🚀 ~ routes.post ~ getEndFromBooked:", getEndFromBooked)
 }
 
-if (bookedRooms && getEndFromBooked === start) {
+if (bookedRooms && getEndFromBooked !== start) {
   return res.json({
     message: `this room ${bookedRooms.dataValues.room_number} has been booked ${bookedRooms.dataValues.booked_from} since ${new Date(bookedRooms.dataValues.createdAt).toDateString()} for ${new Date(bookedRooms.dataValues.start).toDateString()} till ${new Date(bookedRooms.dataValues.end).toDateString()} here is the refrence ${bookedRooms.dataValues.reference_id} how ever you can make future bookings`,
     reference_id: bookedRooms.dataValues.reference_id,
