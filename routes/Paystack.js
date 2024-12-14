@@ -142,7 +142,7 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   //   logging:console.log
   // });
   
-  const bookedRooms = await HotelBooking.findOne({
+  const bookedRoom = await HotelBooking.findOne({
     where: {
       category_id: req.body.category_id,
       room_number: req.body.room_number,
