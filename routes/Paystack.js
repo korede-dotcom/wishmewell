@@ -143,26 +143,27 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   // });
 
   const start = req.body.start.split('T')[0]; // Extract date part
-const end = req.body.end.split('T')[0];
-
-const bookedRooms = await HotelBooking.findOne({
-  where: {
-    category_id: req.body.category_id,
-    room_number: req.body.room_number,
-    status: "success",
-    [Op.and]: [
-      {
-        [Sequelize.literal(`CAST(end AS DATE)`)]:
+  const end = req.body.end.split('T')[0];
+  
+  const bookedRooms = await HotelBooking.findOne({
+    where: {
+      category_id: req.body.category_id,
+      room_number: req.body.room_number,
+      status: "success",
+      [Op.and]: [
+        Sequelize.where(
+          Sequelize.literal(`CAST(end AS DATE)`),
           { [Op.gte]: start }
-      },
-      {
-        [Sequelize.literal(`CAST(start AS DATE)`)]:
+        ),
+        Sequelize.where(
+          Sequelize.literal(`CAST(start AS DATE)`),
           { [Op.lte]: end }
-      }
-    ]
-  },
-  logging: console.log
-});
+        )
+      ]
+    },
+    logging: console.log
+  });
+  
   
   // const bookedRooms = await HotelBooking.findOne({
   //   where: {
