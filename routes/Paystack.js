@@ -34,7 +34,7 @@ function generateRandomString(length) {
 // console.log(randomString); // Example output: 'aB3dEfGh'
 
 routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandler( async (req, res) => {
-  const { category_id,start:strts,  mode,room_number } = req.body;
+  const { category_id,start:strts,end:ends , mode,room_number } = req.body;
   console.log("🚀 ~ routes.post ~ req.body:", req.body)
 
   const currentDate = moment().format("YYYY-MM-DD");
@@ -52,7 +52,7 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   }
 
   // Parse the end date
-  const endDatee = moment(end, "DD-MM-YYYY").format("YYYY-MM-DD");
+  const endDatee = moment(ends, "DD-MM-YYYY").format("YYYY-MM-DD");
 
   // const bookedRooms = await HotelBooking.findOne({
   //   where: {
@@ -143,7 +143,7 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   // });
 
   const start = req.body.start.split('T')[0]; // Extract date part
-const endD = req.body.end.split('T')[0];
+const end = req.body.end.split('T')[0];
 
 const bookedRooms = await HotelBooking.findOne({
   where: {
@@ -153,11 +153,11 @@ const bookedRooms = await HotelBooking.findOne({
     [Op.and]: [
       {
         [Sequelize.literal(`CAST(end AS DATE)`)]:
-          { [Op.gte]: startDate }
+          { [Op.gte]: start }
       },
       {
         [Sequelize.literal(`CAST(start AS DATE)`)]:
-          { [Op.lte]: endDate }
+          { [Op.lte]: end }
       }
     ]
   },
