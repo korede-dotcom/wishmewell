@@ -152,11 +152,6 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
           end: {
             [Op.gt]: Sequelize.literal(`TO_TIMESTAMP(:start, 'YYYY-MM-DD HH24:MI:SS')`)
           }
-        },
-        {
-          start: {
-            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP(:end, 'YYYY-MM-DD HH24:MI:SS')`)
-          }
         }
       ]
     },
@@ -166,6 +161,7 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
     },
     logging: console.log
   });
+  console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms)
   
   
   
