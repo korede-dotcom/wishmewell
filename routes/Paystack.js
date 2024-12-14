@@ -142,30 +142,17 @@ routes.post('/paystack/initialize/reception', checkAuthCookie,expressAsyncHandle
   //   logging:console.log
   // });
   
-  const bookedRooms = await HotelBooking.findOne({
+  const bookedRoom = await HotelBooking.findOne({
     where: {
       category_id: req.body.category_id,
       room_number: req.body.room_number,
       status: "success",
-      [Op.and]: [
-        {
-          end: {
-            [Op.gt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}')`)
-          }
-        },
-        {
-          start: {
-            [Op.lt]: Sequelize.literal(`TO_TIMESTAMP('${req.body.end}')`)
-          }
-        }
-      ]
+      end: {
+        [Op.gte]: Sequelize.literal(`TO_TIMESTAMP('${req.body.start}')`)
+      }
     },
-    logging:console.log
+    logging: console.log
   });
-  
-  
-  console.log("🚀 ~ routes.post ~ bookedRooms:", bookedRooms);
-  
   
 
 // if (bookedRooms > 0) {
