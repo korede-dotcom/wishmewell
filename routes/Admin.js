@@ -513,7 +513,11 @@ routes.get("/all-booking",checkAuthCookie,async (req, res) => {
 })
 
 routes.get("/all-bookings-calendar",checkAuthCookie,async (req, res, next) => {
-      const hotelbookings = await HotelBooking.findAll({status:"success",order: [['createdAt', 'DESC']]})
+      // const hotelbookings = await HotelBooking.findAll({status:"success",order: [['createdAt', 'DESC']]})
+      const hotelbookings = await HotelBooking.findAll({
+            where: { status: "success" },
+            order: [['createdAt', 'DESC']]
+          });
       // const sanitizedBookings = hotelbookings.map(booking => ({
       //       id: booking.id,
       //       start: booking.start,
